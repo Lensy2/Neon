@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <title>{% block title %}Neón{% endblock %}</title>
     {% block stylesheets %}
-        <link href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="/neon/public/images/logo-segurcol.ico">
+        <link href="/neon/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/neon/public/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="/neon/public/css/style.css" rel="stylesheet" type="text/css">
     {% endblock %}
 </head>
-<body>
-{% block navigation %}
-    <nav>
-        <div class="nav-wrapper">
-            <ul id="nav-mobile" class="right">
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li><a href="{{ path('logout') }}">Logout</a></li>
-                {% else %}
+<body {% block bodyAtt %}class="fixed-left"{% endblock %}>
 
-                {% endif %}
-            </ul>
+{#<div id="preloader"><div id="status"><div class="spinner"></div></div></div>#}
+
+<!-- Begin page -->
+<div id="wrapper">
+    {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
+    <div class="content-page">
+        <div class="content">
+            {{ include('bloquesGenerales/encabezado.html.twig') }}
+            {% block content %}
+
+            {% endblock %}
+            {{ include('bloquesGenerales/pie.html.twig') }}
         </div>
-    </nav>
-{% endblock %}
-
-<div class="container">
-    {% block body %}{% endblock %}
+    </div>
 </div>
 {% block javascripts %}
-
+    <script src="/neon/public/js/jquery.min.js"></script>
+    <script src="/neon/public/js/bootstrap.min.js"></script>
 {% endblock %}
 </body>
 </html>
