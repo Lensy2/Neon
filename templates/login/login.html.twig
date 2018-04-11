@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets%}
+    <link rel="shortcut icon" href="/neon/public/images/favicon.ico">
+    <link href="/neon/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/neon/public/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/neon/public/css/style.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+    <div class="accountbg"></div>
+    <div class="wrapper-page">
+
+        <div class="card">
+            <div class="card-block">
+
+                <h3 class="text-center mt-0 m-b-15">
+                    <a href="index.html" class="text-success">
+                        <span><img src="/neon/public/images/logo-segurcol.png'" alt="" height="35"></span>
+                    </a>
+                </h3>
+                <h4 class="text-muted text-center font-18"><b>Acceso</b></h4>
+                <div class="p-3">
+                    <form class="form-horizontal" action="{{ path('acceso') }}" method="POST">
+                        <div class="form-group ">
+                            <div class="col-xs-12">
+                                <label for="_username" class="sr-only">Nombre de usuario</label>
+                                <input type="text"
+                                       id="_username"
+                                       name="_username"
+                                       class="form-control"
+                                       placeholder="Nombre de usuario"
+                                       required=""
+                                       autofocus=""
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <label for="_password" class="sr-only">Clave</label>
+                                <input type="password"
+                                       id="_password"
+                                       name="_password"
+                                       class="form-control"
+                                       placeholder="Clave"
+                                       required=""
+                                       autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group account-btn text-center m-t-10">
+                            <div class="col-xs-12">
+                                <button class="btn w-md btn-bordered btn-primary waves-effect waves-light" type="submit">Ingresar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script src="/neon/public/js/jquery.min.js"></script>
+<script src="/neon/public/js/bootstrap.min.js"></script>
+{% endblock %}
