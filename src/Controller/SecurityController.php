@@ -34,19 +34,7 @@ class SecurityController extends Controller
      * @Route("/logout", name="logout")
      */
     public function logoutAction(){
-        throw new \RuntimeException('No puede ser llamada directamente
-        ');
-    }
-
-
-    /**
-     * @Route("/acceso2", name="acceso2")
-     */
-    public function acceso2Action(Request $request){
-
-
-        return $this->render('Loginlogin2.html.twig');
-
+        throw new \RuntimeException('No puede ser llamada directamente');
     }
 
 }
