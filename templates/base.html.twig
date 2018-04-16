@@ -2,7 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Neón{% endblock %}</title>
+    <title>{% if app.user is defined or app.user is not null %}
+            Neón - {{ app.user.nombres }} {{ app.user.apellidos }}
+        {% else %}
+            {% block title %}Neón{% endblock %}
+        {% endif %}</title>
     {% block stylesheets %}
         <link rel="shortcut icon" href="/neon/public/images/logo-segurcol.ico">
         <link href="/neon/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
