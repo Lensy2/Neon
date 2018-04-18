@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Campo;
+use App\Entity\Campos;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Campo|null find($id, $lockMode = null, $lockVersion = null)
- * @method Campo|null findOneBy(array $criteria, array $orderBy = null)
- * @method Campo[]    findAll()
- * @method Campo[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Campos|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Campos|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Campos[]    findAll()
+ * @method Campos[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CampoRepository extends ServiceEntityRepository
+class CamposRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Campo::class);
+        parent::__construct($registry, Campos::class);
     }
 
 //    /**
-//     * @return Campo[] Returns an array of Campo objects
+//     * @return Campos[] Returns an array of Campos objects
 //     */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class CampoRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Campo
+    public function findOneBySomeField($value): ?Campos
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
