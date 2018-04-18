@@ -11,7 +11,6 @@
     </title>
     {% block stylesheets %}
         <link href="{{ asset('/neon/public/minton/plugins/switchery.min.css') }}" rel="stylesheet" />
-
         <link href="{{ asset('/neon/public/minton/light/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('/neon/public/minton/light/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('/neon/public/minton/light/assets/css/style.css') }}" rel="stylesheet" type="text/css">
@@ -45,7 +44,6 @@
         <div class="content">
             {{ include('bloquesGenerales/encabezado.html.twig') }}
             {% block content %}
-
             {% endblock %}
             {{ include('bloquesGenerales/menuDerecho.html.twig') }}
             {{ include('bloquesGenerales/pie.html.twig') }}
@@ -53,12 +51,9 @@
     </div>
 </div>
 {% block javascripts %}
-
     <script>
         var resizefunc = [];
     </script>
-
-    {#<!-- Plugins  -->#}
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/bootstrap.min.js') }}"></script>
@@ -73,8 +68,6 @@
     <script src="{{ asset('/neon/public/minton/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.core.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.app.js') }}"></script>
-
-
 {% endblock %}
 </body>
 </html>
