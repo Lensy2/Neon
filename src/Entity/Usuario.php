@@ -51,7 +51,7 @@ class Usuario implements UserInterface, \Serializable
     private $token;
 
     /**
-     * @ORM\Column(name="codigo_cliente_fk", type="integer", nullable=true)
+     * @ORM\Column(name="codigo_cliente_fk, type="integer", nullable=true)
      */
     private $codigoClienteFk;
 
