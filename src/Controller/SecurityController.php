@@ -16,13 +16,11 @@ class SecurityController extends Controller
      */
     public function accesoAction(Request $request){
 
-
         $authenticationUtils = $this->get('security.authentication_utils');
 
         $error = $authenticationUtils->getLastAuthenticationError();
-
+//        var_dump($error);exit();
         $lastUsername = $authenticationUtils->getLastUsername();
-
         return $this->render('login/login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
@@ -34,19 +32,7 @@ class SecurityController extends Controller
      * @Route("/logout", name="logout")
      */
     public function logoutAction(){
-        throw new \RuntimeException('No puede ser llamada directamente
-        ');
-    }
-
-
-    /**
-     * @Route("/acceso2", name="acceso2")
-     */
-    public function acceso2Action(Request $request){
-
-
-        return $this->render('Loginlogin2.html.twig');
-
+        throw new \RuntimeException('No puede ser llamada directamente');
     }
 
 }

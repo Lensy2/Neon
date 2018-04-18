@@ -56,11 +56,6 @@ class Usuario implements UserInterface, \Serializable
     private $codigoClienteFk;
 
     /**
-     * @ORM\Column(name="codigo_tarea_fk", type="integer", nullable=true)
-     */
-    private $codigoTareaFk;
-
-    /**
      * @ORM\Column(name="codigo_rol_fk", type="integer", nullable=true)
      */
     private $codigoRolFk;
