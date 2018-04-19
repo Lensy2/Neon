@@ -60,9 +60,7 @@ class Usuario implements UserInterface, \Serializable
      */
     private $codigoRolFk;
 
-    /**
-     * @ORM\Column(name="control", type="boolean", nullable=true)
-     */
+
 
 
     public function serialize()
@@ -347,5 +345,7 @@ class Usuario implements UserInterface, \Serializable
     {
         return $this->rolRel;
     }
+
+
 
 }
