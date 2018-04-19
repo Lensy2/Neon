@@ -6,10 +6,8 @@
 
     <div id="wrapper">
         {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
-
         {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
         <div class="content-page">
-            <!-- Start content -->
             <div class="content">
                 <div class="container">
                     {% block content %}
@@ -17,9 +15,6 @@
                             <div class="col-xs-12">
                                 <div class="page-title-box">
                                     <h4 class="page-title"><i class="mdi mdi-phone-incoming"></i> Crear Usuario</h4>
-                                    {#<a href="{{ path('listadoLlamadas') }}">#}
-                                        {#<button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-backspace"></span> Volver a todas</button>#}
-                                    {#</a>#}
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -28,7 +23,6 @@
                             <div class="col-sm-12">
                                 <div class="card-box">
                                     <h4 class="m-t-0 header-title"><b>Datos del usuario</b></h4>
-                                    {#<h5>Fecha: {{ fecha|date('d/m/Y - H:i:s') }}</h5>#}
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -61,7 +55,6 @@
                                                        {{ form_row(form.clave.second) }}
                                                     </div>
                                                 </div>
-                                                
                                             <hr>
                                                 <div class="form-group">
                                                     <div class="col-md-12">
@@ -77,26 +70,9 @@
                             </div>
                         </div>
                     {% endblock content %}
-                </div> <!-- container -->
-            </div> <!-- content -->
+                </div>
+            </div>
         </div>
         {{ include('bloquesGenerales/pie.html.twig') }}
     </div>
 {% endblock %}
-{#{% block javascriptsBottom %}#}
-    {#<script type="text/javascript">#}
-
-            {#$('form').parsley();#}
-
-        {#$(function () {#}
-            {#$('#form').parsley().on('field:validated', function () {#}
-                {#var ok = $('.parsley-error').length === 0;#}
-                {#$('.alert-info').toggleClass('hidden', !ok);#}
-                {#$('.alert-warning').toggleClass('hidden', ok);#}
-            {#})#}
-            {#.on('form:submit', function () {#}
-                {#return false; // Don't submit form for this demo#}
-            {#});#}
-        {#});#}
-    {#</script>#}
-{#{% endblock %}#}
