@@ -1,10 +1,46 @@
 <body class="fixed-left">
 <div id="wrapper">
     <div class="topbar">
+
+        <div class="topbar-left">
+            <div class="text-center">
+                <a href="#" class="logo"><i class="mdi mdi-apps"></i> <span></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <h4 class="page-title"> Bienvenido </h4>
+                            &nbsp;
+                            {% if app.user is defined or app.user is not null %}
+                                 {{ app.user.nombres }}  {{ app.user.apellidos }}
+                            {% else %}
+
+                            {% endif %}
+
+                            <ol class="breadcrumb float-right">
+                                <li class="breadcrumb-item"><a href="#">Menú</a></li>
+                                <li class="breadcrumb-item active">Opciones</li>
+                            </ol>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<body class="fixed-left">
+<div id="wrapper">
+    <div class="topbar">
         <div class="topbar-left">
             <div class="text-center">
                 <a href="#" class="logo">
-                    <span><img src="{{ asset ('/neon/public/minton/images/logo-segurcol.png') }}" height="50"></span>
+                    <span><img src="{{ asset ('/neon/public/minton/images/segurcol-01.png') }}" height="65"></span>
                 </a>
             </div>
         </div>
@@ -21,15 +57,11 @@
                     </a>
                 </li>
                 <li class="list-inline-item dropdown notification-list">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
-                       aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset ('/neon/public/minton/images/logo-segurcol.png') }}" alt="user" class="rounded-circle">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <i class="mdi mdi-logout"></i> <span>Salir</span>
-                        </a>
-                    </div>
+                    {% if app.user %}
+                        <a href="{{ logout_path('main') }}"><i class="ti-power-off m-r-5"></i> Salir</a>
+                    {% else %}
+                        <a href="{{ path('acceso') }}"><i class="ti-power-off m-r-5"></i> Ingresar</a>
+                    {% endif %}
                 </li>
             </ul>
             <ul class="list-inline menu-left mb-0">
@@ -54,7 +86,7 @@
                     <li class="menu-title">Menú</li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect -menu-alt"><i
-                                    class="ti-light-bulb"></i><span> Actividades </span> <span class="menu-arrow"></span> </a>
+                                    class="ti-layers-alt"></i><span> Actividades </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
                             <li><a href="components-grid.html">Grid</a></li>
                         </ul>
@@ -69,21 +101,21 @@
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-light-bulb"></i><span> Usuarios </span> <span class="menu-arrow"></span> </a>
+                                    class="ti-user"></i><span> Usuarios </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
                             <li><a href="components-grid.html">Grid</a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-map"></i><span> Ubicación </span><span class="menu-arrow"></span></a>
+                                    class="ti-location-pin"></i><span> Ubicación </span><span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
                             <li><a href="map-google.html"> Google Map</a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-light-bulb"></i><span> Reportes </span> <span class="menu-arrow"></span> </a>
+                                    class="ti-layers-alt"></i><span> Reportes </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
                             <li><a href="components-grid.html">Grid</a></li>
                         </ul>
@@ -95,21 +127,6 @@
         </div>
     </div>
     <div class="content-page">
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Bienvenido</h4>
-                            <ol class="breadcrumb float-right">
-                                <li class="breadcrumb-item"><a href="#">Menú</a></li>
-                                <li class="breadcrumb-item active">Opciones</li>
-                            </ol>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <footer class="footer">
             2018 © Soportado por: <a href="http://appsoga.com" target="_blank">AppSoga</a> | <img src="{{ asset('/neon/public/minton/images/Logox100.png') }}" style="height: 50px;"/>
