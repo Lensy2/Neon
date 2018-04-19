@@ -15,7 +15,8 @@ class Usuario implements UserInterface, \Serializable
 
 
     /**
-     * @ORM\Column(name="codigo_usuario_pk",type="string")
+     * @ORM\Column(name="codigo_usuario_pk",type="integer")
+     *  @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Id
      */
     private $codigoUsuarioPk;
