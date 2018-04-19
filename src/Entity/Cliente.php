@@ -9,17 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Cliente
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @var int
