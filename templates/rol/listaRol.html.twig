@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <a href="{{ path('registrarCliente') }}">
+                                    <a href="{{ path('registrarUsuario') }}">
                                         <button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</button>
                                     </a>
                                     <div class="clearfix"></div>
@@ -21,26 +21,29 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card-box">
-                                    <h4 class="header-title m-t-0 m-b-30"> Listado de clientes</h4>
+                                    <h4 class="header-title m-t-0 m-b-30"> Listado de usuarios</h4>
                                     <div class="table-responsive">
                                         <table class="table table table-hover m-0">
                                             <thead>
                                             <tr>
-                                                <th>Nit</th>
-                                                <th>Razón social</th>
-                                                <th>Nombre comercial</th>
+                                                <th>Nombre Usuario</th>
+                                                <th>Nombres</th>
+                                                <th>Apellidos</th>
+                                                <th>Correo</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for cliente in clientes %}
+                                            {% for usuario in usuarios %}
                                                 <tr>
                                                     <td>
-                                                        {{ cliente.nit }}
+                                                        {{ usuario.codigoUsuarioPk }}
                                                     </td>
                                                     <td>
-                                                        {{ cliente.razonSocial }}
+                                                        {{ usuario.nombres }}
                                                     </td>
-                                                    <td>{{ cliente.nombreComercial}}</td>
+                                                    <td>{{ usuario.apellidos }}</td>
+                                                    <td>{{ usuario.correo }}</td>
+                                                    <td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>

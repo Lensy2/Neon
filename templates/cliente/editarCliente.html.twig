@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
-
 {% block bodyAtt %}class="fixed-left"{% endblock %}
-
 {% block body %}
-
     <div id="wrapper">
         {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
         {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
@@ -14,7 +11,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title"><i class="mdi mdi-phone-incoming"></i> Crear Usuario</h4>
+                                    <h4 class="page-title"><i class="mdi mdi-phone-incoming"></i> Crear Cliente</h4>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -22,46 +19,34 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box">
-                                    <h4 class="m-t-0 header-title"><b>Datos del usuario</b></h4>
+                                    <h4 class="m-t-0 header-title"><b>Datos del cliente</b></h4>
                                     <hr>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            {{ form_start(form, { 'attr': {'id':'form','class': 'form-horizontal','data-parsley-validate':'true','novalidate':'novalidate'} }) }}
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label" for="_telefono">Nombre de Usuario: </label>
-                                                    <div class="col-md-5">
-                                                        {{ form_widget(form.codigoUsuarioPk) }}
-                                                    </div>
-                                                    <label class="col-md-2 control-label" for="_telefono">  Correo electrónico:</label>
-                                                    <div class="col-md-3">
-                                                        {{ form_widget(form.email) }}
-                                                    </div>
+                                            {{ form_start(form, { 'attr': {'id':'form','class': 'form-horizontal','data-parsley-validate':'true'} }) }}
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" for="_telefono">Nit: </label>
+                                                <div class="col-md-5">
+                                                    {{ form_widget(form.nit) }}
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label" for="_telefono">Nombres:</label>
-                                                    <div class="col-md-10">
-                                                        {{ form_widget(form.nombres) }}
-                                                    </div>
+                                                <label class="col-md-2 control-label" for="_telefono">  Razón social:</label>
+                                                <div class="col-md-3">
+                                                    {{ form_widget(form.razonSocial) }}
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-md-2 control-label" for="_telefono">Apellidos:</label>
-
-                                                    <div class="col-md-5">
-                                                        {{ form_widget(form.apellidos) }}
-                                                    </div>
-                                                    <label class="col-md-2 control-label" for="_telefono">Clave:</label>
-                                                    <div class="col-md-3">
-                                                       {{ form_row(form.clave.first) }}
-                                                       {{ form_row(form.clave.second) }}
-                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-2 control-label" for="_telefono">Nombre comercial:</label>
+                                                <div class="col-md-10">
+                                                    {{ form_widget(form.nombreComercial) }}
                                                 </div>
+                                            </div>
                                             <hr>
-                                                <div class="form-group">
-                                                    <div class="col-md-12">
-                                                        {{ form_widget(form.btnGuardar, { 'attr': {'class': 'btn btn-success btn-bordered waves-effect w-md waves-light m-b-5','style':'float:right;margin-left:5px;'} }) }}
-                                                        <a href="{{ path('listadoUsuarios') }}" class="btn btn-default btn-bordered waves-effect w-md m-b-5" style="float: right;">CANCELAR</a>
-                                                    </div>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    {{ form_widget(form.btnGuardar, { 'attr': {'class': 'btn btn-success btn-bordered waves-effect w-md waves-light m-b-5','style':'float:right;margin-left:5px;'} }) }}
+                                                    <a href="{{ path('listaUsuario') }}" class="btn btn-default btn-bordered waves-effect w-md m-b-5" style="float: right;">CANCELAR</a>
                                                 </div>
+                                            </div>
                                             {{ form_rest(form) }}
                                             {{ form_end(form) }}
                                         </div>

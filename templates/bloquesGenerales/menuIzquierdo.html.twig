@@ -1,14 +1,12 @@
 <body class="fixed-left">
 <div id="wrapper">
     <div class="topbar">
-
         <div class="topbar-left">
             <div class="text-center">
                 <a href="#" class="logo"><i class="mdi mdi-apps"></i> <span></span></a>
             </div>
         </div>
     </div>
-
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
@@ -16,7 +14,7 @@
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <h4 class="page-title"> Bienvenido </h4>
-                            &nbs
+                            &nbsp;
                             {% if app.user is defined or app.user is not null %}
                                  {{ app.user.nombres }}  {{ app.user.apellidos }}
                             {% else %}
@@ -88,7 +86,7 @@
                         <a href="javascript:void(0);" class="waves-effect -menu-alt"><i
                                     class="ti-menu-alt"></i><span> Actividades </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
-                            <li><a href="#"></a></li>
+                            <li><a href={{ path('usuario') }}>Crear formulario</a></li>
                         </ul>
                     </li>
                     </li>
@@ -96,7 +94,7 @@
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
                                     class="ti-light-bulb"></i><span> Puntos </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
-                            <li><a href="#"></a></li>
+                            <li><a href={{ path('usuario') }}>Nuevo</a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
@@ -108,16 +106,37 @@
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                    class="ti-server"></i><span> Clientes </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href={{ path('usuario') }}>Nuevo</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                    class="ti-bookmark-alt"></i><span> Sedes </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href={{ path('usuario') }}>Nueva</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                    class="ti-pin"></i><span> Roles </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href={{ path('usuario') }}>Nuevo</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
                                     class="ti-location-pin"></i><span> Ubicación </span><span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
-                            <li><a href="map-google.html"> Google Map</a></li>
+                            <li><a href={{ path('usuario') }}>Ver</a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
                                     class="ti-layers-alt"></i><span> Reportes </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
-                            <li><a href="components-grid.html">Grid</a></li>
+                            <li><a href={{ path('usuario') }}>Generar</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -221,7 +240,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+             </div>
+          </div>
+      </div>
+  </body>
 </div>
+
