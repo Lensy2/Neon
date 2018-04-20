@@ -68,6 +68,7 @@ class Usuario implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->codigoUsuarioPk,
+            $this->identificacion,
             $this->clave
         ));
     }
@@ -76,6 +77,7 @@ class Usuario implements UserInterface, \Serializable
     {
         list(
             $this->codigoUsuarioPk,
+            $this->identificacion,
             $this->clave
 
             ) = unserialize($serialized);
