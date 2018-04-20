@@ -20,4 +20,6 @@ class Puntos
     {
         return $this->id;
     }
+
+
 }
