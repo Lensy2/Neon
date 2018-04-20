@@ -12,12 +12,31 @@ class Empresa
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="codigo_empresa_pk", type="integer")
      */
-    private $id;
+    private $codigoEmpresaPk;
 
     public function getId()
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoEmpresaPk()
+    {
+        return $this->codigoEmpresaPk;
+    }
+
+    /**
+     * @param mixed $codigoEmpresaPk
+     * @return Empresa
+     */
+    public function setCodigoEmpresaPk($codigoEmpresaPk)
+    {
+        $this->codigoEmpresaPk = $codigoEmpresaPk;
+        return $this;
+    }
+
 }
