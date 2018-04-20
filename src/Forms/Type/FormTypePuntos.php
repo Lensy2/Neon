@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
 
-class FormTypeCliente extends AbstractType{
+class FormTypePuntos extends AbstractType{
 
     /**
      * @param FormBuilderInterface $builder
