@@ -22,9 +22,14 @@ class Usuario implements UserInterface, \Serializable
     private $codigoUsuarioPk;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="correo")
      */
     private $correo;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, name="identificacion")
+     */
+    private $identificacion;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -349,6 +354,22 @@ class Usuario implements UserInterface, \Serializable
         return $this->rolRel;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdentificacion()
+    {
+        return $this->identificacion;
+    }
 
+    /**
+     * @param mixed $identificacion
+     */
+
+    public function setIdentificacion($identificacion)
+    {
+        $this->identificacion = $identificacion;
+        return $this;
+    }
 
 }
