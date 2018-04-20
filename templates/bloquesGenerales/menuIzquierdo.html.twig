@@ -1,14 +1,12 @@
 <body class="fixed-left">
 <div id="wrapper">
     <div class="topbar">
-
         <div class="topbar-left">
             <div class="text-center">
                 <a href="#" class="logo"><i class="mdi mdi-apps"></i> <span></span></a>
             </div>
         </div>
     </div>
-
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
@@ -16,7 +14,7 @@
                     <div class="col-sm-12">
                         <div class="page-title-box">
                             <h4 class="page-title"> Bienvenido </h4>
-                            &nbs
+                            &nbsp;
                             {% if app.user is defined or app.user is not null %}
                                  {{ app.user.nombres }}  {{ app.user.apellidos }}
                             {% else %}
@@ -102,6 +100,20 @@
                     <li class="has_sub">
                         <a href="javascript:void(0);" class="waves-effect waves-primary"><i
                                     class="ti-user"></i><span> Usuarios </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href={{ path('usuario') }}>Nuevo</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                    class="ti-server"></i><span> Clientes </span> <span class="menu-arrow"></span> </a>
+                        <ul class="list-unstyled">
+                            <li><a href={{ path('usuario') }}>Nuevo</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
+                                    class="ti-pin"></i><span> Roles </span> <span class="menu-arrow"></span> </a>
                         <ul class="list-unstyled">
                             <li><a href={{ path('usuario') }}>Nuevo</a></li>
                         </ul>
@@ -224,4 +236,6 @@
             </div>
         </div>
     </div>
+</body>
 </div>
+
