@@ -15,15 +15,21 @@ class Usuario implements UserInterface, \Serializable
 
 
     /**
-     * @ORM\Column(name="codigo_usuario_pk",type="string")
+     * @ORM\Column(name="codigo_usuario_pk",type="integer")
+     *  @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Id
      */
     private $codigoUsuarioPk;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="correo")
      */
     private $correo;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, name="identificacion")
+     */
+    private $identificacion;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -67,6 +73,7 @@ class Usuario implements UserInterface, \Serializable
     {
         return serialize(array(
             $this->codigoUsuarioPk,
+            $this->identificacion,
             $this->clave
         ));
     }
@@ -75,6 +82,7 @@ class Usuario implements UserInterface, \Serializable
     {
         list(
             $this->codigoUsuarioPk,
+            $this->identificacion,
             $this->clave
 
             ) = unserialize($serialized);
@@ -346,6 +354,22 @@ class Usuario implements UserInterface, \Serializable
         return $this->rolRel;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getIdentificacion()
+    {
+        return $this->identificacion;
+    }
 
+    /**
+     * @param mixed $identificacion
+     */
+
+    public function setIdentificacion($identificacion)
+    {
+        $this->identificacion = $identificacion;
+        return $this;
+    }
 
 }
