@@ -13,13 +13,13 @@ class ClienteController extends Controller {
     var $strIdentificacion = "";
 
     /**
-     * @Route("/", name="")
+     * @Route("/clientes/lista", name="listarCliente")
      */
     public function listaAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        if (!$em->getRepository('')->permiso($this->getUser(), 106, 1)) {
-            return $this->redirect($this->generateUrl(''));
-        }
+//        if (!$em->getRepository('')->permiso($this->getUser(), 106, 1)) {
+//            return $this->redirect($this->generateUrl(''));
+//        }
         $paginator = $this->get('knp_paginator');
         $form = $this->formularioFiltro();
         $form->handleRequest($request);
@@ -27,11 +27,11 @@ class ClienteController extends Controller {
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $arrSeleccionados = $request->request->get('ChkSeleccionar');
-                if ($form->get('BtnEliminar')->isClicked()) {
-                    $arrSeleccionados = $request->request->get('ChkSeleccionar');
-                    $em->getRepository('BrasaCarteraBundle:CarCliente')->eliminar($arrSeleccionados);
-                    return $this->redirect($this->generateUrl('brs_car_base_cliente_listar'));
-                }
+//                if ($form->get('BtnEliminar')->isClicked()) {
+//                    $arrSeleccionados = $request->request->get('ChkSeleccionar');
+//                    $em->getRepository('BrasaCarteraBundle:CarCliente')->eliminar($arrSeleccionados);
+//                    return $this->redirect($this->generateUrl('brs_car_base_cliente_listar'));
+//                }
                 if ($form->get('BtnFiltrar')->isClicked()) {
                     $this->filtrar($form);
                 }
@@ -41,9 +41,9 @@ class ClienteController extends Controller {
                 }
             }
         }
-        $arClientes = $paginator->paginate($em->createQuery($this->strDqlLista), $request->query->get('page', 1), 20);
-        return $this->render('BrasaCarteraBundle:Base/Cliente:lista.html.twig', array(
-            'arClientes' => $arClientes,
+        //$arClientes = $paginator->paginate($em->createQuery($this->strDqlLista), $request->query->get('page', 1), 20);
+        return $this->render('cliente/listaCliente.html.twig', array(
+            //'arClientes' => $arClientes,
             'form' => $form->createView()));
     }
 
