@@ -10,14 +10,59 @@ use Doctrine\ORM\Mapping as ORM;
 class SegmentoFormulario
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="codigo_segmento_formulario_pk",type="integer", unique=true)
+     *  @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Id
      */
-    private $id;
+    private $codigoSegmentoFormularioPk;
 
-    public function getId()
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $nombre;
+    
+    /**
+     * @ORM\Column(name="codigo_cliente_fk", type="integer", nullable=true)
+     */
+    private $codigoFormularioFk;
+
+
+    /**
+     * Set codigoUsuarioPk
+     *
+     * @param string $SegmentoFormulario
+     *
+     * @return Usuario
+     */
+    public function setCodigoUsuarioPk($SegmentoFormulario)
     {
-        return $this->id;
+        $this->SegmentoFormulario = $SegmentoFormulario;
+
+        return $this;
     }
+
+    /**
+     * Set nombres
+     *
+     * @param string $nombres
+     *
+     * @return Usuario
+     */
+    public function setNombres($nombres)
+    {
+        $this->nombres = $nombres;
+
+        return $this;
+    }
+
+    /**
+     * Get nombres
+     *
+     * @return string
+     */
+    public function getNombres()
+    {
+        return $this->nombres;
+    }
+
 }
