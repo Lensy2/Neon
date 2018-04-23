@@ -16,6 +16,10 @@ class Empresa
      */
     private $codigoEmpresaPk;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Usuario", mappedBy="empresaRel")
+     */
+    private $usuarioRel;
     public function getId()
     {
         return $this->id;

@@ -14,10 +14,84 @@ class CampoFormulario
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    /**
+     * @var int
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
+     */
+    private $codigoRolPk;
 
-    public function getId()
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255)
+     */
+    private $nombre;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->id;
+        $this->usuarioRolRel = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add usuarioRolRel
+     *
+     * @param \App\Entity\Usuario $usuarioRolRel
+     *
+     * @return usuarioRolRel
+     */
+    public function addusuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    {
+        $this->usuarioRolRel[] = $usuarioRolRel;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuarioRolRel
+     *
+     * @param \App\Entity\Usuario $usuarioRolRel
+     */
+    public function removeUsuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    {
+        $this->usuarioRolRel->removeElement($usuarioRolRel);
+    }
+
+    /**
+     * Get usuarioRolRel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsuarioRolRel()
+    {
+        return $this->usuarioRolRel;
+    }
+
+    /**
+     * Get codigoRolPk
+     *
+     * @return integer
+     */
+    public function getCodigoRolPk()
+    {
+        return $this->codigoRolPk;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return Rol
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
     }
 }

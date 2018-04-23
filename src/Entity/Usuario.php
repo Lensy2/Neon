@@ -57,14 +57,15 @@ class Usuario implements UserInterface, \Serializable
     private $token;
 
     /**
-     * @ORM\Column(name="codigo_cliente_fk", type="integer", nullable=true)
+     * @ORM\Column(name="codigo_empresa_fk", type="integer", nullable=true)
      */
-    private $codigoClienteFk;
+    private $codigoEmpresaFk;
 
     /**
-     * @ORM\Column(name="codigo_rol_fk", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Empresa", inversedBy="usuarioRel")
+     * @ORM\JoinColumn(name="codigo_empresa_fk", referencedColumnName="codigo_empresa_pk")
      */
-    private $codigoRolFk;
+    private $empresaRel;
 
 
 
