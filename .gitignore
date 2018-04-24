@@ -1,5 +1,9 @@
 /.idea/
 /symfony.lock
+symfony.lock
+composer.lock
+phpunit.xml.dist
+/phpunit.xml.dist
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/
