@@ -9,89 +9,114 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class CampoFormulario
 {
+
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    /**
-     * @var int
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
+     * @ORM\Column(name="codigo_formulario_pk", type="integer", unique=true)
      */
-    private $codigoRolPk;
+    private $codigoFormularioPk;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="codigo_campo_fk", type="integer", nullable=false)
      */
-    private $nombre;
+    private $codigoCampoFk;
 
     /**
-     * Constructor
+     * @ORM\Column(name="codigo_segmento_formulario_fk", type="integer", nullable=false)
      */
-    public function __construct()
+    private $codigoSegmentoFormularioFk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campo", inversedBy="campoFormularioCampoRel")
+     * @ORM\JoinColumn(name="codigo_campo_fk", referencedColumnName="codigo_campo_pk")
+     */
+    private $campoRel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SegmentoFormulario", inversedBy="campoFormularioSegmentoFormularioRel")
+     * @ORM\JoinColumn(name="codigo_segmento_formulario_fk", referencedColumnName="codigo_segmento_formulario_pk")
+     */
+    private $segmentoFormularioRel;
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoFormularioPk()
     {
-        $this->usuarioRolRel = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->codigoFormularioPk;
     }
 
     /**
-     * Add usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
-     *
-     * @return usuarioRolRel
+     * @return mixed
      */
-    public function addusuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    public function getCodigoCampoFk()
     {
-        $this->usuarioRolRel[] = $usuarioRolRel;
+        return $this->codigoCampoFk;
+    }
 
+    /**
+     * @param mixed $codigoCampoFk
+     */
+    public function setCodigoCampoFk($codigoCampoFk)
+    {
+        $this->codigoCampoFk = $codigoCampoFk;
         return $this;
     }
 
     /**
-     * Remove usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
+     * @return mixed
      */
-    public function removeUsuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    public function getCodigoSegmentoFormularioFk()
     {
-        $this->usuarioRolRel->removeElement($usuarioRolRel);
+        return $this->codigoSegmentoFormularioFk;
     }
 
     /**
-     * Get usuarioRolRel
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param mixed $codigoSegmentoFormularioFk
      */
-    public function getUsuarioRolRel()
+    public function setCodigoSegmentoFormularioFk($codigoSegmentoFormularioFk)
     {
-        return $this->usuarioRolRel;
-    }
-
-    /**
-     * Get codigoRolPk
-     *
-     * @return integer
-     */
-    public function getCodigoRolPk()
-    {
-        return $this->codigoRolPk;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Rol
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
+        $this->codigoSegmentoFormularioFk = $codigoSegmentoFormularioFk;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCampoRel()
+    {
+        return $this->campoRel;
+    }
+
+    /**
+     * @param mixed $campoRel
+     */
+    public function setCampoRel($campoRel)
+    {
+        $this->campoRel = $campoRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSegmentoFormularioRel()
+    {
+        return $this->segmentoFormularioRel;
+    }
+
+    /**
+     * @param mixed $segmentoFormularioRel
+     */
+    public function setSegmentoFormularioRel($segmentoFormularioRel)
+    {
+        $this->segmentoFormularioRel = $segmentoFormularioRel;
+        return $this;
+    }
+
+
+
+
+
 }

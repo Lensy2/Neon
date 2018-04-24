@@ -10,92 +10,50 @@ use Doctrine\ORM\Mapping as ORM;
 class Actividad
 {
     /**
-     * @var int
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
+     * @ORM\Column(name="codigo_actividad_pk", type="integer", unique=true)
      */
     private $codigoActividadPk;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(type="date", nullable=false, name="fecha_creacion")
      */
-    private $nombre;
+    private $fechaCreacion;
 
     /**
-     * Constructor
+     * @ORM\Column(type="string", nullable=true, name="actualizado_en",length=100)
      */
-    public function __construct()
-    {
-        $this->codigoActividad= new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
-     * Add usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
-     *
-     * @return codigoActividad
-     */
-    public function codigoActividad(\App\Entity\Usuario $codigoActividad)
-    {
-        $this->codigoActividad[] = $codigoActividad;
-
-        return $this;
-    }
+    private $actualizadoEn;
 
     /**
-     * Remove usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $codigoActividad
+     * @ORM\Column(type="string", nullable=true, name="creado_por",length=100)
      */
-    public function removecodigoActividad(\App\Entity\Usuario $codigoActividad)
-    {
-        $this->codigoActividad->removeElement($codigoActividad);
-    }
+    private $creadoPor;
 
     /**
-     * Get usuarioRolRel
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @ORM\Column(type="string", nullable=true, name="actualizado_por",length=100)
      */
-    public function getUsuariocodigoActividad()
-    {
-        return $this->codigoActividad;
-    }
+    private $actualizadoPor;
 
     /**
-     * Get codigoRolPk
-     *
-     * @return integer
+     * @ORM\Column(name="estado", columnDefinition="TINYINT DEFAULT 1 NOT NULL")
      */
-    public function getcodigoActividadPk()
-    {
-        return $this->codigoActividadPk;
-    }
+    private $estado;
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Rol
+     * @ORM\Column(type="time", nullable=false, name="hora")
      */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
+    private $hora;
 
     /**
-     * Get nombre
-     *
-     * @return string
+     * @ORM\Column(type="integer", nullable=false, name="codigo_punto_fk")
      */
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
+    private $codigoPuntoFk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Punto", inversedBy="actividadPuntoRel")
+     * @ORM\JoinColumn(name="codigo_punto_fk", referencedColumnName="codigo_punto_pk")
+     */
+    private $puntoRel;
 }

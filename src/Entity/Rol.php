@@ -12,7 +12,6 @@ class Rol
 
 
     /**
-     * @var int
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
@@ -20,64 +19,22 @@ class Rol
     private $codigoRolPk;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre", type="string", length=255)
+     * @ORM\Column(name="nombre", type="string", length=45, nullable=false)
      */
     private $nombre;
 
-//
-//    /**
-//     *
-//     * ORM\OneToMany(targetEntity="Usuario", mappedBy="rolRel")
-//     */
-//
-//    private $usuarioRolRel;
     /**
-     * Constructor
+     * @ORM\Column(name="descripcion", type="string", length=100, nullable=true)
      */
-    public function __construct()
-    {
-        $this->usuarioRolRel = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
-     * Add usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
-     *
-     * @return usuarioRolRel
-     */
-    public function addusuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
-    {
-        $this->usuarioRolRel[] = $usuarioRolRel;
-
-        return $this;
-    }
+    private $descripcion;
 
     /**
-     * Remove usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
+     * @ORM\OneToMany(targetEntity="App\Entity\Usuario", mappedBy="rolRel")
      */
-    public function removeUsuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
-    {
-        $this->usuarioRolRel->removeElement($usuarioRolRel);
-    }
+    private $usuarioRolRel;
 
     /**
-     * Get usuarioRolRel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarioRolRel()
-    {
-        return $this->usuarioRolRel;
-    }
-
-    /**
-     * Get codigoRolPk
-     *
-     * @return integer
+     * @return mixed
      */
     public function getCodigoRolPk()
     {
@@ -85,26 +42,56 @@ class Rol
     }
 
     /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Rol
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
+     * @return mixed
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param mixed $descripcion
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsuarioRolRel()
+    {
+        return $this->usuarioRolRel;
+    }
+
+    /**
+     * @param mixed $usuarioRolRel
+     */
+    public function setUsuarioRolRel($usuarioRolRel)
+    {
+        $this->usuarioRolRel = $usuarioRolRel;
+        return $this;
+    }
+
+
+
 }

@@ -10,92 +10,108 @@ use Doctrine\ORM\Mapping as ORM;
 class Campo
 {
     /**
-     * @var int
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
+     * @ORM\Column(name="codigo_campo_pk", type="integer", unique=true)
      */
-    private $codigoRolPk;
+    private $codigoCampoPk;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
 
     /**
-     * Constructor
+     * @ORM\Column(name="tipo", type="string", length=25)
      */
-    public function __construct()
-    {
-        $this->usuarioRolRel = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
-     * Add usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
-     *
-     * @return usuarioRolRel
-     */
-    public function addusuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
-    {
-        $this->usuarioRolRel[] = $usuarioRolRel;
 
-        return $this;
-    }
+    private $tipo;
 
     /**
-     * Remove usuarioRolRel
-     *
-     * @param \App\Entity\Usuario $usuarioRolRel
+     * @ORM\OneToMany(targetEntity="App\Entity\OpcionCampo", mappedBy="campoRel")
      */
-    public function removeUsuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    private $opcionCampoCampoRel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CampoFormulario", mappedBy="campoRel")
+     */
+    private $campoFormularioCampoRel;
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoCampoPk()
     {
-        $this->usuarioRolRel->removeElement($usuarioRolRel);
+        return $this->codigoCampoPk;
     }
 
     /**
-     * Get usuarioRolRel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarioRolRel()
-    {
-        return $this->usuarioRolRel;
-    }
-
-    /**
-     * Get codigoRolPk
-     *
-     * @return integer
-     */
-    public function getCodigoRolPk()
-    {
-        return $this->codigoRolPk;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Rol
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
+     * @return mixed
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOpcionCampoCampoRel()
+    {
+        return $this->opcionCampoCampoRel;
+    }
+
+    /**
+     * @param mixed $opcionCampoCampoRel
+     */
+    public function setOpcionCampoCampoRel($opcionCampoCampoRel)
+    {
+        $this->opcionCampoCampoRel = $opcionCampoCampoRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampoFormularioCampoRel()
+    {
+        return $this->campoFormularioCampoRel;
+    }
+
+    /**
+     * @param mixed $campoFormularioCampo
+     */
+    public function setCampoFormularioCampoRel($campoFormularioCampoRel)
+    {
+        $this->campoFormularioCampoRel = $campoFormularioCampoRel;
+        return $this;
+    }
+
+
 }

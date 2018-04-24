@@ -22,52 +22,66 @@ class Usuario implements UserInterface, \Serializable
     private $codigoUsuarioPk;
 
     /**
-     * @ORM\Column(type="string", nullable=true, name="correo")
-     */
-    private $correo;
-
-    /**
-     * @ORM\Column(type="string", nullable=true, name="identificacion")
+     * @ORM\Column(type="string", nullable=false, name="identificacion")
      */
     private $identificacion;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $nombres;
-
-    /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="apellidos")
      */
     private $apellidos;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true,name="nombre")
+     */
+    private $nombre;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, name="email")
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, name="clave")
      */
     private $clave;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
+     * @ORM\Column(type="boolean", nullable=true, name="verificado")
      */
     private $verificado;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="token")
      */
     private $token;
 
     /**
-     * @ORM\Column(name="codigo_empresa_fk", type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="telefono")
+     */
+    private $telefono;
+
+    /**
+     * @ORM\Column(name="codigo_empresa_fk", type="integer", nullable=false)
      */
     private $codigoEmpresaFk;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Empresa", inversedBy="usuarioRel")
+     * @ORM\Column(type="integer", nullable=false, name="codigo_rol_fk")
+     */
+    private $codigoRolFk;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="App\Entity\Rol", inversedBy="usuarioRolRel")
+    * @ORM\JoinColumn(name="codigo_rol_fk", referencedColumnName="codigo_rol_pk")
+    */
+    private $rolRel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Empresa", inversedBy="usuarioEmpresaRel")
      * @ORM\JoinColumn(name="codigo_empresa_fk", referencedColumnName="codigo_empresa_pk")
      */
     private $empresaRel;
-
-
 
 
     public function serialize()
@@ -115,19 +129,6 @@ class Usuario implements UserInterface, \Serializable
 
     }
 
-    /**
-     * Set codigoUsuarioPk
-     *
-     * @param string $codigoUsuarioPk
-     *
-     * @return Usuario
-     */
-    public function setCodigoUsuarioPk($codigoUsuarioPk)
-    {
-        $this->codigoUsuarioPk = $codigoUsuarioPk;
-
-        return $this;
-    }
 
     /**
      * Get codigoUsuarioPk
@@ -137,222 +138,6 @@ class Usuario implements UserInterface, \Serializable
     public function getCodigoUsuarioPk()
     {
         return $this->codigoUsuarioPk;
-    }
-
-    /**
-     * Set correo
-     *
-     * @param string $correo
-     *
-     * @return Usuario
-     */
-    public function setCorreo($correo)
-    {
-        $this->correo = $correo;
-
-        return $this;
-    }
-
-    /**
-     * Get correo
-     *
-     * @return string
-     */
-    public function getCorreo()
-    {
-        return $this->correo;
-    }
-
-    /**
-     * Set nombres
-     *
-     * @param string $nombres
-     *
-     * @return Usuario
-     */
-    public function setNombres($nombres)
-    {
-        $this->nombres = $nombres;
-
-        return $this;
-    }
-
-    /**
-     * Get nombres
-     *
-     * @return string
-     */
-    public function getNombres()
-    {
-        return $this->nombres;
-    }
-
-    /**
-     * Set apellidos
-     *
-     * @param string $apellidos
-     *
-     * @return Usuario
-     */
-    public function setApellidos($apellidos)
-    {
-        $this->apellidos = $apellidos;
-
-        return $this;
-    }
-
-    /**
-     * Get apellidos
-     *
-     * @return string
-     */
-    public function getApellidos()
-    {
-        return $this->apellidos;
-    }
-
-    /**
-     * Set clave
-     *
-     * @param string $clave
-     *
-     * @return Usuario
-     */
-    public function setClave($clave)
-    {
-        $this->clave = $clave;
-
-        return $this;
-    }
-
-    /**
-     * Get clave
-     *
-     * @return string
-     */
-    public function getClave()
-    {
-        return $this->clave;
-    }
-
-    /**
-     * Set verificado
-     *
-     * @param boolean $verificado
-     *
-     * @return Usuario
-     */
-    public function setVerificado($verificado)
-    {
-        $this->verificado = $verificado;
-
-        return $this;
-    }
-
-    /**
-     * Get verificado
-     *
-     * @return boolean
-     */
-    public function getVerificado()
-    {
-        return $this->verificado;
-    }
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return Usuario
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
-
-    /**
-     * Set codigoClienteFk
-     *
-     * @param integer $codigoClienteFk
-     *
-     * @return Usuario
-     */
-    public function setCodigoClienteFk($codigoClienteFk)
-    {
-        $this->codigoClienteFk = $codigoClienteFk;
-
-        return $this;
-    }
-
-    /**
-     * Get codigoClienteFk
-     *
-     * @return integer
-     */
-    public function getCodigoClienteFk()
-    {
-        return $this->codigoClienteFk;
-    }
-
-    /**
-     * Set codigoRolFk
-     *
-     * @param integer $codigoRolFk
-     *
-     * @return Usuario
-     */
-    public function setCodigoRolFk($codigoRolFk)
-    {
-        $this->codigoRolFk = $codigoRolFk;
-
-        return $this;
-    }
-
-    /**
-     * Get codigoRolFk
-     *
-     * @return integer
-     */
-    public function getCodigoRolFk()
-    {
-        return $this->codigoRolFk;
-    }
-
-    /**
-     * Set rolRel
-     *
-     * @param \App\Entity\Rol $rolRel
-     *
-     * @return Usuario
-     */
-    public function setRolRel(\App\Entity\Rol $rolRel = null)
-    {
-        $this->rolRel = $rolRel;
-
-        return $this;
-    }
-
-    /**
-     * Get rolRel
-     *
-     * @return \App\Entity\Rol
-     */
-    public function getRolRel()
-    {
-        return $this->rolRel;
     }
 
     /**
@@ -366,11 +151,199 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @param mixed $identificacion
      */
-
     public function setIdentificacion($identificacion)
     {
         $this->identificacion = $identificacion;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getApellidos()
+    {
+        return $this->apellidos;
+    }
+
+    /**
+     * @param mixed $apellidos
+     */
+    public function setApellidos($apellidos)
+    {
+        $this->apellidos = $apellidos;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClave()
+    {
+        return $this->clave;
+    }
+
+    /**
+     * @param mixed $clave
+     */
+    public function setClave($clave)
+    {
+        $this->clave = $clave;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVerificado()
+    {
+        return $this->verificado;
+    }
+
+    /**
+     * @param mixed $verificado
+     */
+    public function setVerificado($verificado)
+    {
+        $this->verificado = $verificado;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param mixed $token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * @param mixed $telefono
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoEmpresaFk()
+    {
+        return $this->codigoEmpresaFk;
+    }
+
+    /**
+     * @param mixed $codigoEmpresaFk
+     */
+    public function setCodigoEmpresaFk($codigoEmpresaFk)
+    {
+        $this->codigoEmpresaFk = $codigoEmpresaFk;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoRolFk()
+    {
+        return $this->codigoRolFk;
+    }
+
+    /**
+     * @param mixed $codigoRolFk
+     */
+    public function setCodigoRolFk($codigoRolFk)
+    {
+        $this->codigoRolFk = $codigoRolFk;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRolRel()
+    {
+        return $this->rolRel;
+    }
+
+    /**
+     * @param mixed $rolRel
+     */
+    public function setRolRel($rolRel)
+    {
+        $this->rolRel = $rolRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmpresaRel()
+    {
+        return $this->empresaRel;
+    }
+
+    /**
+     * @param mixed $empresaRel
+     */
+    public function setEmpresaRel($empresaRel)
+    {
+        $this->empresaRel = $empresaRel;
+        return $this;
+    }
+
+
 
 }
