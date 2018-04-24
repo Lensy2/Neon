@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>
         {% if app.user is defined or app.user is not null %}
-            Neón - {{ app.user.nombres }} {{ app.user.apellidos }}
         {% else %}
             {% block title %}Neón{% endblock %}
         {% endif %}

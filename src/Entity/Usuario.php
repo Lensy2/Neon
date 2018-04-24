@@ -129,7 +129,6 @@ class Usuario implements UserInterface, \Serializable
 
     }
 
-
     /**
      * Get codigoUsuarioPk
      *
@@ -343,7 +342,5 @@ class Usuario implements UserInterface, \Serializable
         $this->empresaRel = $empresaRel;
         return $this;
     }
-
-
 
 }
