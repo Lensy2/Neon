@@ -8,7 +8,7 @@ security:
 
     providers:
         user_db:
-            entity: { class: App\Entity\Usuario, property: identificacion }
+            entity: { class: App\Entity\Usuario, property: username }
 
     firewalls:
         dev:

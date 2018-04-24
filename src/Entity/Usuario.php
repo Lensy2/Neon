@@ -27,6 +27,11 @@ class Usuario implements UserInterface, \Serializable
     private $identificacion;
 
     /**
+     * @ORM\Column(type="string", nullable=false, name="username")
+     */
+    private $username;
+
+    /**
      * @ORM\Column(type="string", nullable=true, name="apellidos")
      */
     private $apellidos;
