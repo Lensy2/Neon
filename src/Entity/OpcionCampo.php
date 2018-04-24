@@ -9,105 +9,117 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class OpcionCampo
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    /**
-     * @var int
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(name="codigo_rol_pk", type="integer", unique=true)
-     */
-    private $codigoRolPk;
 
     /**
-     * @var string
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="codigo_opcion_campo_pk", type="integer", unique=true)
+     */
+    private $codigoOpcionCampoPk;
+
+    /**
      *
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
 
-//
-//    /**
-//     *
-//     * ORM\OneToMany(targetEntity="Usuario", mappedBy="rolRel")
-//     */
-//
-//    private $usuarioRolRel;
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->usuarioRolRel = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
-     * Add usuarioRolRel
      *
-     * @param \App\Entity\Usuario $usuarioRolRel
-     *
-     * @return usuarioRolRel
+     * @ORM\Column(name="valor", type="string", length=255)
      */
-    public function addusuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
-    {
-        $this->usuarioRolRel[] = $usuarioRolRel;
 
-        return $this;
-    }
+    private $valor;
 
     /**
-     * Remove usuarioRolRel
      *
-     * @param \App\Entity\Usuario $usuarioRolRel
+     * @ORM\Column(name="codigo_campo_fk", type="integer",nullable=false)
      */
-    public function removeUsuarioRolRel(\App\Entity\Usuario $usuarioRolRel)
+    private $codigoCampoFk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Campo", inversedBy="opcionCampoCampoRel")
+     * @ORM\JoinColumn(name="codigo_campo_fk", referencedColumnName="codigo_campo_pk")
+     */
+    private $campoRel;
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoOpcionCampoPk()
     {
-        $this->usuarioRolRel->removeElement($usuarioRolRel);
+        return $this->codigoOpcionCampoPk;
     }
 
     /**
-     * Get usuarioRolRel
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsuarioRolRel()
-    {
-        return $this->usuarioRolRel;
-    }
-
-    /**
-     * Get codigoRolPk
-     *
-     * @return integer
-     */
-    public function getCodigoRolPk()
-    {
-        return $this->codigoRolPk;
-    }
-
-    /**
-     * Set nombre
-     *
-     * @param string $nombre
-     *
-     * @return Rol
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    /**
-     * Get nombre
-     *
-     * @return string
+     * @return mixed
      */
     public function getNombre()
     {
         return $this->nombre;
     }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    /**
+     * @param mixed $valor
+     */
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoCampoFk()
+    {
+        return $this->codigoCampoFk;
+    }
+
+    /**
+     * @param mixed $codigoCampoFk
+     */
+    public function setCodigoCampoFk($codigoCampoFk)
+    {
+        $this->codigoCampoFk = $codigoCampoFk;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCampoRel()
+    {
+        return $this->campoRel;
+    }
+
+    /**
+     * @param mixed $campoRel
+     */
+    public function setCampoRel($campoRel)
+    {
+        $this->campoRel = $campoRel;
+        return $this;
+    }
+
+
+
+
+
 }

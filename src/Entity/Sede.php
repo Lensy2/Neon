@@ -18,27 +18,40 @@ class Sede
     private $codigoSedePk;
 
     /**
-     * @ORM\Column(type="string", nullable=true, name="identificacion")
-     */
-
-    private $identificacion;
-
-    /**
-     * @ORM\Column(type="string", nullable=true, name="nombre")
+     * @ORM\Column(name="nombre", type="string", length=200, nullable=false)
      */
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", nullable=true, name="direccion")
+     * @ORM\Column(name="direccion", type="string", length=150, nullable=true)
      */
-
     private $direccion;
 
     /**
-     * @ORM\Column(name="telefono", type="integer", nullable=true)
+     * @ORM\Column(name="telefono", type="string", length=15, nullable=true)
      */
-
     private $telefono;
+
+    /**
+     * @ORM\Column(name="email", type="string", length=100, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="codigo_cliente_fk", type="integer", nullable=false)
+     */
+    private $codigoClienteFk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cliente", inversedBy="sedeClienteRel")
+     * @ORM\JoinColumn(name="codigo_cliente_fk", referencedColumnName="codigo_cliente_pk")
+     */
+    private $clienteRel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Punto", mappedBy="sedePuntoRel")
+     */
+    private $puntoSedeRel;
 
     /**
      * @return mixed
@@ -46,32 +59,6 @@ class Sede
     public function getCodigoSedePk()
     {
         return $this->codigoSedePk;
-    }
-
-    /**
-     * @param mixed $codigoSedePk
-     */
-    public function setCodigoSedePk($codigoSedePk)
-    {
-        $this->codigoSedePk = $codigoSedePk;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdentificacion()
-    {
-        return $this->identificacion;
-    }
-
-    /**
-     * @param mixed $identificacion
-     */
-    public function setIdentificacion($identificacion)
-    {
-        $this->identificacion = $identificacion;
-        return $this;
     }
 
     /**
@@ -125,8 +112,73 @@ class Sede
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoClienteFk()
+    {
+        return $this->codigoClienteFk;
+    }
+
+    /**
+     * @param mixed $codigoClienteFk
+     */
+    public function setCodigoClienteFk($codigoClienteFk)
+    {
+        $this->codigoClienteFk = $codigoClienteFk;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClienteRel()
+    {
+        return $this->clienteRel;
+    }
+
+    /**
+     * @param mixed $clienteRel
+     */
+    public function setClienteRel($clienteRel)
+    {
+        $this->clienteRel = $clienteRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPuntoSedeRel()
+    {
+        return $this->puntoSedeRel;
+    }
+
+    /**
+     * @param mixed $puntoSedeRel
+     */
+    public function setPuntoSedeRel($puntoSedeRel)
+    {
+        $this->puntoSedeRel = $puntoSedeRel;
+        return $this;
+    }
 
 
 

@@ -17,52 +17,101 @@ class SegmentoFormulario
     private $codigoSegmentoFormularioPk;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="nombre", nullable=false)
      */
     private $nombre;
     
     /**
-     * @ORM\Column(name="codigo_cliente_fk", type="integer", nullable=true)
+     * @ORM\Column(name="codigo_formulario_fk", type="integer", nullable=false)
      */
     private $codigoFormularioFk;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CampoFormulario", mappedBy="segmentoFormularioRel")
+     */
+    private $campoFormularioSegmentoFormularioRel;
 
     /**
-     * Set codigoUsuarioPk
-     *
-     * @param string $SegmentoFormulario
-     *
-     * @return Usuario
+     * @ORM\ManyToOne(targetEntity="App\Entity\Formulario", inversedBy="segmentoFormularioFormulario")
+     * @ORM\JoinColumn(name="codigo_formulario_fk", referencedColumnName="codigo_formulario_pk")
      */
-    public function setCodigoUsuarioPk($SegmentoFormulario)
-    {
-        $this->SegmentoFormulario = $SegmentoFormulario;
+    private $formularioRel;
 
+    /**
+     * @return mixed
+     */
+    public function getCodigoSegmentoFormularioPk()
+    {
+        return $this->codigoSegmentoFormularioPk;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
         return $this;
     }
 
     /**
-     * Set nombres
-     *
-     * @param string $nombres
-     *
-     * @return Usuario
+     * @return mixed
      */
-    public function setNombres($nombres)
+    public function getCodigoFormularioFk()
     {
-        $this->nombres = $nombres;
+        return $this->codigoFormularioFk;
+    }
 
+    /**
+     * @param mixed $codigoFormularioFk
+     */
+    public function setCodigoFormularioFk($codigoFormularioFk)
+    {
+        $this->codigoFormularioFk = $codigoFormularioFk;
         return $this;
     }
 
     /**
-     * Get nombres
-     *
-     * @return string
+     * @return mixed
      */
-    public function getNombres()
+    public function getCampoFormularioSegmentoFormularioRel()
     {
-        return $this->nombres;
+        return $this->campoFormularioSegmentoFormularioRel;
     }
+
+    /**
+     * @param mixed $campoFormularioSegmentoFormularioRel
+     */
+    public function setCampoFormularioSegmentoFormularioRel($campoFormularioSegmentoFormularioRel)
+    {
+        $this->campoFormularioSegmentoFormularioRel = $campoFormularioSegmentoFormularioRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormularioRel()
+    {
+        return $this->formularioRel;
+    }
+
+    /**
+     * @param mixed $formularioRel
+     */
+    public function setFormularioRel($formularioRel)
+    {
+        $this->formularioRel = $formularioRel;
+        return $this;
+    }
+
 
 }

@@ -11,7 +11,6 @@ class Cliente
 {
 
     /**
-     * @var int
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(name="codigo_cliente_pk", type="integer", unique=true)
@@ -19,107 +18,168 @@ class Cliente
     private $codigoClientePk;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nit", type="string", length=11, nullable=true)
+     * @ORM\Column(type="string", nullable=false, name="identificacion")
      */
-    private $nit;
+    private $identificacion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="razon_social", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", nullable=false, name="nombre")
      */
-    private $razonSocial;
+    private $nombre;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nombre_comercial", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", nullable=true, name="telefono")
      */
-    private $nombreComercial;
+    private $telefono;
 
     /**
-     *
-     * @ORM\OneToMany(targetEntity="Llamada", mappedBy="clienteRel")
+     * @ORM\Column(type="string", nullable=true, name="email")
      */
+    private $email;
 
+    /**
+     * @ORM\Column(type="integer", nullable=false, name="codigo_empresa_fk")
+     */
+    private $codigoEmpresaFk;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Empresa", inversedBy="clienteEmpresaRel")
+     * @ORM\JoinColumn(name="codigo_empresa_fk", referencedColumnName="codigo_empresa_pk")
+     */
+    private $empresaRel;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sede", mappedBy="clienteRel")
+     */
+    private $sedeClienteRel;
+
+    /**
+     * @return mixed
+     */
     public function getCodigoClientePk()
     {
         return $this->codigoClientePk;
     }
 
     /**
-     * Set nit
-     *
-     * @param string $nit
-     *
-     * @return Cliente
+     * @return mixed
      */
-    public function setNit($nit)
+    public function getIdentificacion()
     {
-        $this->nit = $nit;
+        return $this->identificacion;
+    }
 
+    /**
+     * @param mixed $identificacion
+     */
+    public function setIdentificacion($identificacion)
+    {
+        $this->identificacion = $identificacion;
         return $this;
     }
 
     /**
-     * Get nit
-     *
-     * @return string
+     * @return mixed
      */
-    public function getNit()
+    public function getNombre()
     {
-        return $this->nit;
+        return $this->nombre;
     }
 
     /**
-     * Set razonSocial
-     *
-     * @param string $razonSocial
-     *
-     * @return Cliente
+     * @param mixed $nombre
      */
-    public function setRazonSocial($razonSocial)
+    public function setNombre($nombre)
     {
-        $this->razonSocial = $razonSocial;
-
+        $this->nombre = $nombre;
         return $this;
     }
 
     /**
-     * Get razonSocial
-     *
-     * @return string
+     * @return mixed
      */
-    public function getRazonSocial()
+    public function getTelefono()
     {
-        return $this->razonSocial;
+        return $this->telefono;
     }
 
     /**
-     * Set nombreComercial
-     *
-     * @param string $nombreComercial
-     *
-     * @return Cliente
+     * @param mixed $telefono
      */
-    public function setNombreComercial($nombreComercial)
+    public function setTelefono($telefono)
     {
-        $this->nombreComercial = $nombreComercial;
-
+        $this->telefono = $telefono;
         return $this;
     }
 
     /**
-     * Get nombreComercial
-     *
-     * @return string
+     * @return mixed
      */
-    public function getNombreComercial()
+    public function getEmail()
     {
-        return $this->nombreComercial;
+        return $this->email;
     }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCodigoEmpresaFk()
+    {
+        return $this->codigoEmpresaFk;
+    }
+
+    /**
+     * @param mixed $codigoEmpresaFk
+     */
+    public function setCodigoEmpresaFk($codigoEmpresaFk)
+    {
+        $this->codigoEmpresaFk = $codigoEmpresaFk;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmpresaRel()
+    {
+        return $this->empresaRel;
+    }
+
+    /**
+     * @param mixed $empresaRel
+     */
+    public function setEmpresaRel($empresaRel)
+    {
+        $this->empresaRel = $empresaRel;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSedeClienteRel()
+    {
+        return $this->sedeClienteRel;
+    }
+
+    /**
+     * @param mixed $sedeClienteRel
+     */
+    public function setSedeClienteRel($sedeClienteRel)
+    {
+        $this->sedeClienteRel = $sedeClienteRel;
+        return $this;
+    }
+
 
 }
 
