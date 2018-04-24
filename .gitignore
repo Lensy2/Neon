@@ -1,4 +1,5 @@
-
+/.idea/
+/symfony.lock
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/
