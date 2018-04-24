@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class InicioController extends Controller
 {
     /**
+     * Método para ir al inicio de la aplicación.
      * @Route("/", name="inicio")
      */
     public function index()
