@@ -110,7 +110,7 @@ class Usuario implements UserInterface, \Serializable
 
     public function getUsername()
     {
-        return $this->getCodigoUsuarioPk();
+        return $this->username;
     }
 
     public function getRoles()
@@ -347,5 +347,7 @@ class Usuario implements UserInterface, \Serializable
         $this->empresaRel = $empresaRel;
         return $this;
     }
+
+
 
 }
