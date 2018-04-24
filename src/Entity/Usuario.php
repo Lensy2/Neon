@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Usuario implements UserInterface, \Serializable
 {
 
+    /**
+     * @ORM\Column(type="string", nullable=false, name="username")
+     */
+    private $username;
 
     /**
      * @ORM\Column(name="codigo_usuario_pk",type="integer")
@@ -25,11 +29,6 @@ class Usuario implements UserInterface, \Serializable
      * @ORM\Column(type="string", nullable=false, name="identificacion")
      */
     private $identificacion;
-
-    /**
-     * @ORM\Column(type="string", nullable=false, name="username")
-     */
-    private $username;
 
     /**
      * @ORM\Column(type="string", nullable=true, name="apellidos")
