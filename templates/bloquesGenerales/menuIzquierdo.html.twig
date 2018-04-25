@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-    <div class="content-page">
+<div class="content-page">
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -16,7 +16,6 @@
                             <h4 class="page-title"> Bienvenido </h4>
                             &nbsp;
                             {% if app.user is defined or app.user is not null %}
-
                             {% else %}
                             {% endif %}
                             <ol class="breadcrumb float-right">
@@ -81,53 +80,82 @@
                 <ul>
                     <li class="menu-title">Menú</li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect -menu-alt"><i
-                                    class="ti-menu-alt"></i><span> Actividades </span> <span class="menu-arrow"></span> </a>
-                        <ul class="list-unstyled">
-
-                        </ul>
-                    </li>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-light-bulb"></i><span> Puntos </span> <span class="menu-arrow"></span> </a>
-                        <ul class="list-unstyled">
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-user"></i><span> Usuarios </span> <span class="menu-arrow"></span> </a>
-                        <ul class="list-unstyled">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-settings"></i> <span> Actividades </span>
+                            <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled" style="display: none;">
+                            <li class="has_sub">
+                                <a href="" class="waves-effect">
+                                    <i class="mdi-check"></i>
+                                    <span> Nuevo </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-server"></i><span> Clientes </span> <span class="menu-arrow"></span> </a>
-                        <ul class="list-unstyled">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account"></i> <span> Clientes </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="list-unstyled" style="display: none;">
+                            <li class="has_sub">
+                                <a href="" class="waves-effect">
+                                    <i class="glyphicon glyphicon-th-large"></i>
+                                    <span> Nuevo </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-bookmark-alt"></i><span> Sedes </span> <span class="menu-arrow"></span> </a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-key"></i> <span> Sedes </span>
+                            <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
+                            <li><a href="">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span> Nuevo </span>
+                                </a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-pin"></i><span> Roles </span> <span class="menu-arrow"></span> </a>
-                        <ul class="list-unstyled">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-circles-extended"></i> <span> Puntos </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="list-unstyled" style="display: none;">
+                            <li class="has_sub">
+                                <a href="" class="waves-effect">
+                                    <i class="glyphicon glyphicon-th-large"></i>
+                                    <span> Nuevo </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-location-pin"></i><span> Ubicación </span><span class="menu-arrow"></span></a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple"></i> <span> Usuarios </span>
+                            <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
+                            <li><a href="">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span> Nuevo </span>
+                                </a></li>
                         </ul>
                     </li>
                     <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect waves-primary"><i
-                                    class="ti-layers-alt"></i><span> Reportes </span> <span class="menu-arrow"></span> </a>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi-action-toc"></i> <span> Ubicación </span>
+                            <span class="menu-arrow"></span></a>
                         <ul class="list-unstyled">
+                            <li><a href="">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span> Ver </span>
+                                </a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-multiple-outline"></i> <span> Reportes </span>
+                            <span class="menu-arrow"></span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                    <span> Generar </span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -138,9 +166,7 @@
     </div>
     <div class="content-page">
         </div>
-        <footer class="footer">
-            2018 © Soportado por: <a href="http://appsoga.com" target="_blank">AppSoga</a> | <img src="{{ asset('/neon/public/minton/images/Logox100.png') }}" style="height: 50px;"/>
-        </footer>
+
     </div>
     <div class="side-bar right-bar">
         <div class="">
