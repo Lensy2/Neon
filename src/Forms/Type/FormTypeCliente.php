@@ -21,23 +21,29 @@ class FormTypeCliente extends AbstractType{
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add ('nit', TextType::class,array(
+            ->add ('identificacion', TextType::class,array(
                 'attr' => array(
-                    'id' => '_nit',
-                    'name' => '_nit'
+                    'id' => '_identificacion',
+                    'name' => '_identificacion'
                 )
             ))
 
-            ->add ('razonSocial', TextType::class,array(
+            ->add ('nombre', TextType::class,array(
                 'attr' => array(
-                    'id' => '_razonSocial',
-                    'name' => '_razonSocial'
+                    'id' => '_nombre',
+                    'name' => '_nombre'
                 )
             ))
-            ->add ('nombreComercial', TextType::class,array(
+            ->add ('telefono', TextType::class,array(
                 'attr' => array(
-                    'id' => '_nombreComercial',
-                    'name' => '_nombreComercial'
+                    'id' => '_telefono',
+                    'name' => '_telefono'
+                )
+            ))
+            ->add ('email', TextType::class,array(
+                'attr' => array(
+                    'id' => '_email',
+                    'name' => '_email'
                 )
             ))
 
@@ -49,5 +55,9 @@ class FormTypeCliente extends AbstractType{
                 ), 'label' => 'GUARDAR'
             ))
         ;
+    }
+    public function getBlockPrefix()
+    {
+        return 'form';
     }
 }

@@ -19,15 +19,11 @@
 <body {% block bodyAtt %}class="fixed-left"{% endblock %}>
 <div id="wrapper">
     {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
-    <div class="content-page">
-        <div class="content">
-            {{ include('bloquesGenerales/encabezado.html.twig') }}
-            {% block content %}
-            {% endblock %}
-            {{ include('bloquesGenerales/menuDerecho.html.twig') }}
-            {{ include('bloquesGenerales/pie.html.twig') }}
-        </div>
-    </div>
+    {{ include('bloquesGenerales/encabezado.html.twig') }}
+    {% block content %}
+    {% endblock %}
+    {{ include('bloquesGenerales/menuDerecho.html.twig') }}
+    {{ include('bloquesGenerales/pie.html.twig') }}
 </div>
 {% block javascripts %}
     <script>

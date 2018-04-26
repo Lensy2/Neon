@@ -1,19 +1,16 @@
 {% extends 'base.html.twig' %}
 {% block bodyAtt %}class="fixed-left"{% endblock %}
 {% block body %}
-    <div id="wrapper">
-        {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
-        {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
+       {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
+       {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
+                    {% block content %}
         <div class="content-page">
             <div class="content">
                 <div class="container">
-                    {% block content %}
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <a href="{{ path('registrarCliente') }}">
                                         <button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</button>
-                                    </a>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -32,15 +29,15 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for cliente in clientes %}
+                                            {% for clientes in pager.currentPageResults %}
                                                 <tr>
                                                     <td>
-                                                        {{ cliente.nit }}
+                                                        {{ clientes.identificacion }}
                                                     </td>
                                                     <td>
-                                                        {{ cliente.razonSocial }}
+                                                        {{ clientes.nombre }}
                                                     </td>
-                                                    <td>{{ cliente.nombreComercial}}</td>
+                                                    <td>{{ clientes.email}}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -49,10 +46,15 @@
                                 </div>
                             </div>
                         </div>
-                    {% endblock content %}
+                        {% if pager.haveToPaginate %}
+                            <div class="pagerfanta">
+                                {{ pagerfanta(pager) }}
+                            </div>
+                        {% endif %}
                 </div>
             </div>
         </div>
+        {% endblock content %}
         {{ include('bloquesGenerales/pie.html.twig') }}
     </div>
 {% endblock %}
