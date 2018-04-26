@@ -1,0 +1,29 @@
+<div class="topbar">
+    <div class="topbar-left">
+        <div class="text-center">
+            <a href="#" class="logo"><i class="mdi mdi-apps"></i> <span></span></a>
+        </div>
+    </div>
+</div>
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title"> Bienvenido </h4>
+                        &nbsp;
+                        {% if app.user is defined or app.user is not null %}
+                        {% else %}
+                        {% endif %}
+                        <ol class="breadcrumb float-right">
+                            <li class="breadcrumb-item"><a href="#">Menú</a></li>
+                            <li class="breadcrumb-item active">Opciones</li>
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
