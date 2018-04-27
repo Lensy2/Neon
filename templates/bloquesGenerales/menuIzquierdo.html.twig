@@ -1,137 +1,84 @@
-<div id="wrapper">
-    <div class="topbar">
-        <div class="topbar-left">
-            <div class="text-center">
-                <a href="#" class="logo">
-                    <span><img src="{{ asset ('/neon/public/minton/images/LogoGrisClarox100.png') }}" height="65"></span>
-                </a>
-            </div>
-        </div>
-        <nav class="navbar-custom">
-            <ul class="list-inline float-right mb-0">
-                <li class="list-inline-item notification-list hide-phone">
-                    <a class="nav-link waves-light waves-effect" href="#" id="btn-fullscreen">
-                        <i class="mdi mdi-crop-free noti-icon"></i>
-                    </a>
+<div class="left side-menu">
+    <div class="sidebar-inner slimscrollleft">
+        <div id="sidebar-menu">
+            <ul>
+                <li class="menu-title">Menú</li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi-view-headline"></i> <span> Actividades </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li class="has_sub">
+                            <a href="" class="waves-effect">
+                                <i class="mdi mdi-phone-incoming"></i>
+                                <span> Crear </span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="list-inline-item notification-list">
-                    <a class="nav-link right-bar-toggle waves-light waves-effect" href="#">
-                        <i class="mdi mdi-dots-horizontal noti-icon"></i>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Clientes </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li class="has_sub">
+                            <a href="" class="waves-effect">
+                                <i class="glyphicon glyphicon-th-large"></i>
+                                <span> Crear </span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li class="list-inline-item dropdown notification-list">
-                    {% if app.user %}
-                        <a href="{{ logout_path('main') }}"><i class="ti-power-off m-r-5"></i>Salir</a>
-                    {% else %}
-                        <a href="{{ path('acceso') }}"><i class="ti-power-off m-r-5"></i>Ingresar</a>
-                    {% endif %}
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-watermark"></i> <span> Sedes </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Pendientes</span>
+                            </a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi-google-circles-extended"></i> <span> Puntos </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Pendientes</span>
+                            </a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Usuarios </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Pendientes</span>
+                            </a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Ubicación </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Casos</span>
+                            </a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Reportes </span>
+                        <span class="menu-arrow"></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Lista</span>
+                            </a></li>
+                    </ul>
                 </li>
             </ul>
-            <ul class="list-inline menu-left mb-0">
-                <li class="float-left">
-                    <button class="button-menu-mobile open-left waves-light waves-effect">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
-                </li>
-                <li class="hide-phone app-search">
-                    <form role="search" class="">
-                        <input type="text" placeholder="Buscar" class="form-control">
-                        <a href="#"><i class="fa fa-search"></i></a>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="left side-menu">
-        <div class="sidebar-inner slimscrollleft">
-            <div id="sidebar-menu">
-                <ul>
-                    <li class="menu-title">Menú</li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-settings"></i> <span> Actividades </span>
-                            <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled" style="display: none;">
-                            <li class="has_sub">
-                                <a href="" class="waves-effect">
-                                    <i class="mdi-check"></i>
-                                    <span> Nuevo </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account"></i> <span> Clientes </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="list-unstyled" style="display: none;">
-                            <li class="has_sub">
-                                <a href="{{ path("lista_cliente") }}" class="waves-effect">
-                                    <i class="glyphicon glyphicon-th-large"></i>
-                                    <span> Lista </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-key"></i> <span> Sedes </span>
-                            <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="">
-                                    <i class="glyphicon glyphicon-list-alt"></i>
-                                    <span> Nuevo </span>
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-circles-extended"></i> <span> Puntos </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="list-unstyled" style="display: none;">
-                            <li class="has_sub">
-                                <a href="" class="waves-effect">
-                                    <i class="glyphicon glyphicon-th-large"></i>
-                                    <span> Nuevo </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple"></i> <span> Usuarios </span>
-                            <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="">
-                                    <i class="glyphicon glyphicon-list-alt"></i>
-                                    <span> Nuevo </span>
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi-action-toc"></i> <span> Ubicación </span>
-                            <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="">
-                                    <i class="glyphicon glyphicon-list-alt"></i>
-                                    <span> Ver </span>
-                                </a></li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-folder-multiple-outline"></i> <span> Reportes </span>
-                            <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="">
-                                    <i class="glyphicon glyphicon-list-alt"></i>
-                                    <span> Generar </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="clearfix"></div>
-            </div>
-            <div class="clearfix"></div>
         </div>
     </div>
 </div>
-
-
