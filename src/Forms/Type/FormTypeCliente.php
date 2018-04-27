@@ -47,7 +47,6 @@ class FormTypeCliente extends AbstractType{
                 )
             ))
 
-//            Botón Guardar
             ->add ('btnGuardar', SubmitType::class, array(
                 'attr' => array(
                     'id' => '_btnGuardar',
