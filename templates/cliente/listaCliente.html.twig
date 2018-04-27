@@ -19,10 +19,15 @@
                             <div class="col-md-12">
                                 <div class="card-box">
                                     <h4 class="header-title m-t-0 m-b-30"> Listado de clientes</h4>
+                                    {{ form_start(form) }}
+                                    {{ form_widget(form.TxtNombre, { 'attr': {'class': 'form-control'} }) }}
+                                    {{ form_widget(form.BtnFiltrar) }}
+                                    {{ form_end(form) }}
                                     <div class="table-responsive">
                                         <table class="table table table-hover m-0">
                                             <thead>
                                             <tr>
+                                                <th>id</th>
                                                 <th>Nit</th>
                                                 <th>Razón social</th>
                                                 <th>Nombre comercial</th>
@@ -31,8 +36,9 @@
                                             <tbody>
                                             {% for clientes in pager.currentPageResults %}
                                                 <tr>
+                                                    <td>{{ clientes.codigoClientePk }}</td>
                                                     <td>
-                                                        {{ clientes.identificacion }}
+                                                        {{ clientes.nit }}
                                                     </td>
                                                     <td>
                                                         {{ clientes.nombre }}

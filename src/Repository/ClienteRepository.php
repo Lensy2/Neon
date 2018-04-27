@@ -3,21 +3,27 @@
 namespace App\Repository;
 
 use App\Entity\Cliente;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Cliente|null find($id, $lockMode = null, $lockVersion = null)
- * @method Cliente|null findOneBy(array $criteria, array $orderBy = null)
- * @method Cliente[]    findAll()
- * @method Cliente[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class ClienteRepository extends ServiceEntityRepository
+class ClienteRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
-        parent::__construct($registry, Cliente::class);
+    public function listaDQL($nombre){
+        $em = $this->getEntityManager();
+        $arClientes = $em->createQueryBuilder()
+            ->from("App:Cliente", "cli")
+            ->select("cli");
+        if(!empty($nombre)) {
+            $arClientes->where("cli.nombre LIKE '%{$nombre}%'");
+        }
+        return $arClientes->getQuery();
+
     }
+//    public function __construct(RegistryInterface $registry)
+//    {
+//        parent::__construct($registry, Cliente::class);
+//    }
 
 //    /**
 //     * @return Cliente[] Returns an array of Cliente objects
