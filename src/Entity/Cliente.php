@@ -18,9 +18,9 @@ class Cliente
     private $codigoClientePk;
 
     /**
-     * @ORM\Column(type="string", nullable=false, name="identificacion")
+     * @ORM\Column(type="string", nullable=false, name="nit")
      */
-    private $identificacion;
+    private $nit;
 
     /**
      * @ORM\Column(type="string", nullable=false, name="nombre")
@@ -64,17 +64,26 @@ class Cliente
     /**
      * @return mixed
      */
-    public function getIdentificacion()
+    public function getNit()
     {
-        return $this->identificacion;
+        return $this->nit;
     }
 
     /**
-     * @param mixed $identificacion
+     * @param mixed $nit
      */
-    public function setIdentificacion($identificacion)
+    public function setNit($nit)
     {
-        $this->identificacion = $identificacion;
+        $this->nit = $nit;
+        return $this;
+    }
+
+    /**
+     * @param mixed $nit
+     */
+    public function setUsuario($usuario)
+    {
+        $this->nit = $usuario;
         return $this;
     }
 

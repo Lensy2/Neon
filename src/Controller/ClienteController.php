@@ -1,18 +1,23 @@
 <?php
 
 namespace App\Controller;
-
+use App\Repository;
 use App\Entity\Cliente;
 use App\Forms\Type\FormTypeCliente;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Pagerfanta\Adapter\DoctrineSelectableAdapter;
+use Doctrine\Common\Collections\Criteria;
 
 class ClienteController extends Controller
 {
-    var $strDqlLista = "";
     var $strCodigo = "";
     var $strNombre = "";
     var $strIdentificacion = "";
@@ -21,18 +26,31 @@ class ClienteController extends Controller
      * @Route("/cliente/lista", name="lista_cliente")
      */
     public function listaAction(Request $request) {
+        $sesion = new Session();
         $page=$request->query->get('page', 1);
-        $maxPerPage = '2';
+        $maxPerPage = '50';
         $currentPage = $page;
         if (!$page){$currentPage = '1';}
-        $entityManager = $this->getDoctrine()->getManager();
-        $queryBuilder = $entityManager->createQueryBuilder()
-            ->select(array('c'))
-            ->from('App\Entity\Cliente', 'c');
-        $adapter = new DoctrineORMAdapter($queryBuilder);
+
+        $form = $this->createFormBuilder()
+            ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $sesion->get('filtroNombreCliente'), 'required'=>false))
+            ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
+            ->getForm();
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            if ($form->get('BtnFiltrar')->isClicked()) {
+                $this->filtrar($form);
+                $currentPage = 1;
+            }
+        }
+        #$queryBuilder= $this->getDoctrine()->getManager()->getRepository('App:Cliente')->li();
+        $dqlLista = $this->lista();
+//        $criteria = Criteria::create()->andWhere(Criteria::expr()->in('codigo_cliente_pk', array(1,2,3)));
+//        $adapter = new DoctrineSelectableAdapter($queryBuilder, $criteria);
+        $adapter = new DoctrineORMAdapter($dqlLista);
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage($maxPerPage)->setCurrentPage($currentPage);
-        return $this->render('cliente/listaCliente.html.twig',array('pager' => $pagerfanta));
+        return $this->render('cliente/listaCliente.html.twig',array('pager' => $pagerfanta, 'form'=>$form->createView()));
 
     }
     /**
@@ -50,8 +68,8 @@ class ClienteController extends Controller
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
                 $arCliente = $form->getData();
-                $arClienteValidar = new \Cliente();
-                $arClienteValidar = $em->getRepository('ClienteRepository')->findBy(array('nit' => $arCliente->getNit()));
+                $arClienteValidar = new Cliente();
+                $arClienteValidar = $em->getRepository('App:Cliente')->findBy(array('nit' => $arCliente->getNit()));
                 if (($codigoCliente == 0 || $codigoCliente == '') && count($arClienteValidar) > 0) {
                 } else {
                     $arUsuario = $this->getUser();
@@ -63,6 +81,7 @@ class ClienteController extends Controller
                     } else {
                         return $this->redirect($this->generateUrl('lista_cliente'));
                     }
+
                 }
             }
         }
@@ -71,26 +90,22 @@ class ClienteController extends Controller
             'form' => $form->createView()));
     }
     private function lista() {
+        $sesion = new Session();
         $em = $this->getDoctrine()->getManager();
-        $this->strDqlLista = $em->getRepository('ClienteRepository')->listaDQL(
-            $this->strNombre, $this->strCodigo, $this->strIdentificacion
+        return $em->getRepository('App:Cliente')->listaDQL(
+            $sesion->get("filtroNombreCliente")
         );
     }
 
     private function filtrar($form) {
-        $this->strCodigo = $form->get('TxtCodigo')->getData();
-        $this->strNombre = $form->get('TxtNombre')->getData();
-        $this->strIdentificacion = $form->get('TxtIdentificacion')->getData();
-        $this->lista();
+        $sesion = new Session();
+        $sesion->set("filtroNombreCliente", $form->get('TxtNombre')->getData());
     }
 
     private function formularioFiltro() {
+        $session= new Session();
         $form = $this->createFormBuilder()
-            ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $this->strNombre))
-            ->add('TxtIdentificacion', TextType::class, array('label' => 'Identificacion', 'data' => $this->strIdentificacion))
-            ->add('TxtCodigo', TextType::class, array('label' => 'Codigo', 'data' => $this->strCodigo))
-            ->add('BtnEliminar', SubmitType::class, array('label' => 'Eliminar',))
-            ->add('BtnExcel', SubmitType::class, array('label' => 'Excel',))
+            ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $session->get('filtrarNombre')))
             ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
             ->getForm();
         return $form;
@@ -154,7 +169,6 @@ class ClienteController extends Controller
         $objWriter->save('php://output');
         exit;
     }
-
 }
 
 

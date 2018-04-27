@@ -21,10 +21,10 @@ class FormTypeCliente extends AbstractType{
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add ('identificacion', TextType::class,array(
+            ->add ('nit', TextType::class,array(
                 'attr' => array(
-                    'id' => '_identificacion',
-                    'name' => '_identificacion'
+                    'id' => '_nit',
+                    'name' => '_nit'
                 )
             ))
 
