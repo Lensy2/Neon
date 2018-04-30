@@ -43,10 +43,7 @@ class ClienteController extends Controller
                 $currentPage = 1;
             }
         }
-        #$queryBuilder= $this->getDoctrine()->getManager()->getRepository('App:Cliente')->li();
         $dqlLista = $this->lista();
-//        $criteria = Criteria::create()->andWhere(Criteria::expr()->in('codigo_cliente_pk', array(1,2,3)));
-//        $adapter = new DoctrineSelectableAdapter($queryBuilder, $criteria);
         $adapter = new DoctrineORMAdapter($dqlLista);
         $pagerfanta = new Pagerfanta($adapter);
         $pagerfanta->setMaxPerPage($maxPerPage)->setCurrentPage($currentPage);
@@ -60,31 +57,27 @@ class ClienteController extends Controller
         $em = $this->getDoctrine()->getManager();
         $arCliente= new Cliente();
         if ($codigoCliente != '' && $codigoCliente != '0') {
-            $arCliente = $em->getRepository('Cliente')->find($codigoCliente);
             $arCliente = new Cliente();
+            $arCliente = $em->getRepository('Cliente')->find($codigoCliente);
+
         }
         $form = $this->createForm(\App\Forms\Type\FormTypeCliente::class, $arCliente);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {
+                $arCliente = new Cliente();
                 $arCliente = $form->getData();
-                $arClienteValidar = new Cliente();
-                $arClienteValidar = $em->getRepository('App:Cliente')->findBy(array('nit' => $arCliente->getNit()));
-                if (($codigoCliente == 0 || $codigoCliente == '') && count($arClienteValidar) > 0) {
-                } else {
-                    $arUsuario = $this->getUser();
-                    $arCliente->setUsuario($arUsuario->getUserName());
-                    $em->persist($arCliente);
-                    $em->flush();
-                    if ($form->get('guardarnuevo')->isClicked()) {
-                        return $this->redirect($this->generateUrl('lista_cliente', array('codigoCliente' => 0)));
+                $arEmpresa = $em->getRepository('App:Empresa')->find(1);
+                $arCliente->setEmpresaRel($arEmpresa);
+                  if ($form->get('btnGuardar')->isClicked()) {
+                          $em->persist($arCliente);
+                          $em->flush();
+                      return $this->redirect($this->generateUrl('lista_cliente', array('codigoCliente' => 0)));
                     } else {
                         return $this->redirect($this->generateUrl('lista_cliente'));
                     }
-
                 }
             }
-        }
         return $this->render('cliente/crearCliente.html.twig', array(
             'arCliente' => $arCliente,
             'form' => $form->createView()));
