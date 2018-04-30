@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -9,45 +10,47 @@ class PuntosController extends Controller
 
 {
     /**
-     * @Route("/puntos", name="puntos")
+     * @Route("/punto_nuevo", name="nuevo_puntos")
      */
-    public function nuevoPunto(\Symfony\Component\HttpFoundation\Request $request, $codigoPuntoPk=null)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $pun= $this->get();
+    public function listaAction(Request $request) {
+        $sesion = new Session();
+        $page=$request->query->get('page', 1);
+        $maxPerPage = '50';
+        $currentPage = $page;
+        if (!$page){$currentPage = '1';}
 
-        if ($codigoPuntoPk != null) {
-            $arPunto = $em->getRepository('Puntos')->find($codigoPuntoPk);
-            if (!$arPunto) {
-                throw $this->createNotFoundException("No existe");
-            } else {
-                $form = $this->createForm(FormTypePuntos::class, $arPunto);
-                $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $arPunto->setCodigoRol(1);
-                    $em->flush();
-                    return $this->redirect($this->generateUrl('listaPuntos'));
-                }
-                return $this->render('puntos/editarPuntos.html.twig', [
-                    'puntos' => $arPunto,
-                    'form' => $form->createView()
-                ]);
+        $form = $this->createFormBuilder()
+            ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $sesion->get('filtroNombrePunto'), 'required'=>false))
+            ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
+            ->getForm();
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            if ($form->get('BtnFiltrar')->isClicked()) {
+                $this->filtrar($form);
+                $currentPage = 1;
             }
-        } else {
-            $arPuntos = new Puntos();
-            $form = $this->createForm(FormTypePuntos::class, $arPuntos);
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()) {
-                $em->persist($arPuntos);
-                $em->flush();
-                return $this->redirect($this->generateUrl('listarPuntos'));
-            }
-            return $this->render('Puntos/crearPuntos.html.twig',
-                array(
-                    'form' => $form->createView(),
-                ));
         }
+        $dqlLista = $this->lista();
+        $adapter = new DoctrineORMAdapter($dqlLista);
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage($maxPerPage)->setCurrentPage($currentPage);
+        return $this->render('puntos/listaPunto.html.twig',array('pager' => $pagerfanta, 'form'=>$form->createView()));
+
+    }
+    /**
+     * @Route("/punto_lista", name="lista_punto")
+     */
+    public function lista() {
+        $sesion = new Session();
+        $em = $this->getDoctrine()->getManager();
+        return $em->getRepository('App:Punto')->listaDQL(
+            $sesion->get("filtroNombrePunto")
+        );
     }
 
+    private function filtrar($form) {
+        $sesion = new Session();
+        $sesion->set("filtroNombrePunto", $form->get('TxtNombre')->getData());
+    }
  }
 

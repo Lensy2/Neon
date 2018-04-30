@@ -78,18 +78,20 @@
                     <ul class="list-unstyled">
                         <li><a href="">
                                 <i class="glyphicon glyphicon-list-alt"></i>
-                                <span>Pendientes</span>
+                                <span> Listar </span>
                             </a></li>
                     </ul>
                 </li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="mdi-google-circles-extended"></i> <span> Puntos </span>
                         <span class="menu-arrow"></span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="">
-                                <i class="glyphicon glyphicon-list-alt"></i>
-                                <span>Pendientes</span>
-                            </a></li>
+                    <ul class="list-unstyled" style="display: none;">
+                        <li class="has_sub">
+                            <a href="{{ path("lista_punto") }}" class="waves-effect">
+                                <i class="glyphicon glyphicon-th-large"></i>
+                                <span> Listar </span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="has_sub">
@@ -98,7 +100,7 @@
                     <ul class="list-unstyled">
                         <li><a href="">
                                 <i class="glyphicon glyphicon-list-alt"></i>
-                                <span>Lista</span>
+                                <span> Listar </span>
                             </a></li>
                     </ul>
                 </li>
