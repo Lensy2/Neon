@@ -2,23 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Puntos;
+use App\Entity\Punto;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Puntos|null find($id, $lockMode = null, $lockVersion = null)
- * @method Puntos|null findOneBy(array $criteria, array $orderBy = null)
- * @method Puntos[]    findAll()
- * @method Puntos[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Punto|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Punto|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Punto[]    findAll()
+ * @method Punto[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PuntosRepository extends ServiceEntityRepository
+class PuntosRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
-        parent::__construct($registry, Puntos::class);
-    }
 
+    public function listaDQL($nombre){
+        $em = $this->getEntityManager();
+        $arPuntos = $em->createQueryBuilder()
+            ->from("App:Punto", "pu")
+            ->select("pu");
+        if(!empty($nombre)) {
+            $arPuntos->where("pu.nombre LIKE '%{$nombre}%'");
+        }
+        return $arPuntos->getQuery();
+
+    }
+   //
 //    /**
 //     * @return Puntos[] Returns an array of Puntos objects
 //     */

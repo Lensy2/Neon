@@ -21,23 +21,23 @@ class FormTypePuntos extends AbstractType{
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add ('nit', TextType::class,array(
+            ->add ('nombre', TextType::class,array(
                 'attr' => array(
-                    'id' => '_nit',
-                    'name' => '_nit'
+                    'id' => '_nombre',
+                    'name' => '_nombre'
                 )
             ))
 
-            ->add ('razonSocial', TextType::class,array(
+            ->add ('direccion', TextType::class,array(
                 'attr' => array(
-                    'id' => '_razonSocial',
-                    'name' => '_razonSocial'
+                    'id' => '_direccion',
+                    'name' => '_direccion'
                 )
             ))
-            ->add ('nombreComercial', TextType::class,array(
+            ->add ('telefono', TextType::class,array(
                 'attr' => array(
-                    'id' => '_nombreComercial',
-                    'name' => '_nombreComercial'
+                    'id' => '_telefono',
+                    'name' => '_telefono'
                 )
             ))
 
