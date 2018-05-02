@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <h4 class="page-title"><i class="mdi mdi-phone-incoming"></i> Crear Usuario</h4>
+                                    <h4 class="page-title"><i class="mdi mdi-phone-incoming"></i> Crear Sede </h4>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -23,23 +23,17 @@
                                         <div class="col-md-12">
                                             {{ form_start(form, { 'attr': {'id':'form','class': 'form-horizontal','data-parsley-validate':'true'} }) }}
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="_telefono">Nombre de Usuario: </label>
+                                                <label class="col-md-2 control-label" for="_nombre">Nombre</label>
                                                 <div class="col-md-5">
                                                     {{ form_widget(form.codigoUsuarioPk) }}
                                                 </div>
-                                                <label class="col-md-2 control-label" for="_telefono">  Correo electrónico:</label>
+                                                <label class="col-md-2 control-label" for="_correo">Correo electrónico</label>
                                                 <div class="col-md-3">
                                                     {{ form_widget(form.correo) }}
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-2 control-label" for="_telefono">Nombres:</label>
-                                                <div class="col-md-10">
-                                                    {{ form_widget(form.nombres) }}
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 control-label" for="_telefono">Apellidos:</label>
+                                                <label class="col-md-2 control-label" for="_direccion">Dirección</label>
                                                 <div class="col-md-5">
                                                     {{ form_widget(form.apellidos) }}
                                                 </div>

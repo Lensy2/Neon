@@ -2,6 +2,7 @@
 
 namespace App\Forms\Type;
 
+use App\Entity\Sede;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Doctrine\ORM\EntityRepository;
 
-class FormTypePuntos extends AbstractType{
+class FormTypePunto extends AbstractType{
 
     /**
      * @param FormBuilderInterface $builder
@@ -40,8 +41,24 @@ class FormTypePuntos extends AbstractType{
                     'name' => '_telefono'
                 )
             ))
+            ->add('SedeRel', EntityType::class, array(
+                'class' => Sede::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('s')
+                        ->orderBy('s.nombre', 'ASC');
+                },
+                'choice_label' => 'nombre',
+                'label'=>false,
+            ))
+//            ->add('cuentaRel', EntityType::class, array(
+//                'class' => Sede::class,
+//                'query_builder' => function (EntityRepository $er)  {
+//                    return $er->createQueryBuilder('c')
+//                        ->orderBy('c.nombre', 'ASC');},
+//                'choice_label' => 'nombre',
+//                'required' => true))
 
-//            Botón Guardar
+            //Botón Guardar
             ->add ('btnGuardar', SubmitType::class, array(
                 'attr' => array(
                     'id' => '_btnGuardar',
@@ -49,5 +66,9 @@ class FormTypePuntos extends AbstractType{
                 ), 'label' => 'GUARDAR'
             ))
         ;
+    }
+    public function getBlockPrefix()
+    {
+        return 'form';
     }
 }

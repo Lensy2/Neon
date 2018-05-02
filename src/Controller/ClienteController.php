@@ -18,9 +18,6 @@ use Doctrine\Common\Collections\Criteria;
 
 class ClienteController extends Controller
 {
-    var $strCodigo = "";
-    var $strNombre = "";
-    var $strIdentificacion = "";
 
     /**
      * @Route("/cliente/lista", name="lista_cliente")
@@ -78,7 +75,7 @@ class ClienteController extends Controller
                     }
                 }
             }
-        return $this->render('cliente/crearCliente.html.twig', array(
+        return $this->render('puntos/listaPunto.html.twig', array(
             'arCliente' => $arCliente,
             'form' => $form->createView()));
     }
