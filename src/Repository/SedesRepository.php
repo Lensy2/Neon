@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Sedes;
+use App\Entity\Sede;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Sedes|null find($id, $lockMode = null, $lockVersion = null)
- * @method Sedes|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sedes[]    findAll()
- * @method Sedes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Sede|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Sede|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Sede[]    findAll()
+ * @method Sede[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class SedesRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Sedes::class);
+        parent::__construct($registry, Sede::class);
     }
 
 //    /**

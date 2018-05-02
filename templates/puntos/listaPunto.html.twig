@@ -28,22 +28,20 @@
                                         <thead>
                                         <tr>
                                             <th>id</th>
-                                            <th>Nit</th>
-                                            <th>Razón social</th>
-                                            <th>Nombre comercial</th>
+                                            <th>Nombre Punto</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        {% for clientes in pager.currentPageResults %}
+                                        {% for punto in pager.currentPageResults %}
                                             <tr>
-                                                <td>{{ clientes.codigoClientePk }}</td>
+                                                <td>{{ punto.codigoPuntoPk }}</td>
                                                 <td>
-                                                    {{ clientes.nit }}
+                                                    {{ punto.nombre}}
                                                 </td>
                                                 <td>
-                                                    {{ clientes.nombre }}
+                                                    {{ punto.direccion}}
                                                 </td>
-                                                <td>{{ clientes.email}}</td>
+                                                <td>{{ punto.telefono}}</td>
                                             </tr>
                                         {% endfor %}
                                         </tbody>

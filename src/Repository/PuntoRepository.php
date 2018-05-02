@@ -7,13 +7,7 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-/**
- * @method Punto|null find($id, $lockMode = null, $lockVersion = null)
- * @method Punto|null findOneBy(array $criteria, array $orderBy = null)
- * @method Punto[]    findAll()
- * @method Punto[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class PuntosRepository extends EntityRepository
+class PuntoRepository extends EntityRepository
 {
 
     public function listaDQL($nombre){
