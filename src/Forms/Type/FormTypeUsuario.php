@@ -30,7 +30,6 @@ class FormTypeUsuario extends AbstractType{
                     'name' => '_codigoUsuarioPk'
                 )
             ))
-
             ->add ('nombres', TextType::class,array(
                 'attr' => array(
                     'id' => '_nombres',

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Usuario;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,11 +13,23 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Usuario[]    findAll()
  * @method Usuario[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UsuarioRepository extends ServiceEntityRepository
+class UsuarioRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
-        parent::__construct($registry, Usuario::class);
+//    public function __construct(RegistryInterface $registry)
+//    {
+//        parent::__construct($registry, Sede::class);
+//    }
+
+    public function listaDQL($usuario){
+        $em = $this->getEntityManager();
+        $arUsuario= $em->createQueryBuilder()
+            ->from("App:Usuario", "us")
+            ->select("us");
+        if(!empty($sedes)) {
+            $arUsuario->where("se.nombre LIKE '%{$usuario}%'");
+        }
+        return $arUsuario->getQuery();
+
     }
 
 //    /**

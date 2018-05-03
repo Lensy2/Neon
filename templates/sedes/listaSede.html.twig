@@ -11,9 +11,9 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <a href="{{ path('registrarUsuario') }}">
-                                        <button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</button>
-                                    </a>
+                                    {#<a href="{{ path('crear_sede') }}">#}
+                                        {#<button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</button>#}
+                                    {#</a>#}
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -28,21 +28,20 @@
                                             <tr>
                                                 <th>Nombre Usuario</th>
                                                 <th>Nombres</th>
-                                                <th>Apellidos</th>
-                                                <th>Correo</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for usuario in usuarios %}
+                                            {% for sede in  pager.currentPageResults %}
                                                 <tr>
                                                     <td>
-                                                        {{ usuario.codigoUsuarioPk }}
+                                                        {{ sede.codigoSedePk }}
                                                     </td>
                                                     <td>
-                                                        {{ usuario.nombres }}
+                                                        {{ sede.nombre}}
                                                     </td>
-                                                    <td>{{ usuario.apellidos }}</td>
-                                                    <td>{{ usuario.correo }}</td>
+                                                    <td>{{ sede.direccion }}</td>
+                                                    <td>{{ sede.telefono }}</td>
+
                                                     <td>
                                                 </tr>
                                             {% endfor %}
