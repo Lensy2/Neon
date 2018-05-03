@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Sede;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -12,11 +13,23 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  * @method Sede[]    findAll()
  * @method Sede[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SedesRepository extends ServiceEntityRepository
+class SedesRepository extends EntityRepository
 {
-    public function __construct(RegistryInterface $registry)
-    {
-        parent::__construct($registry, Sede::class);
+//    public function __construct(RegistryInterface $registry)
+//    {
+//        parent::__construct($registry, Sede::class);
+//    }
+
+    public function listaDQL($sedes){
+        $em = $this->getEntityManager();
+        $arSedes = $em->createQueryBuilder()
+            ->from("App:Sede", "se")
+            ->select("se");
+        if(!empty($sedes)) {
+            $arSedes->where("se.nombre LIKE '%{$sedes}%'");
+        }
+        return $arSedes->getQuery();
+
     }
 
 //    /**

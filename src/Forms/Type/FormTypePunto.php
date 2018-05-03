@@ -50,14 +50,6 @@ class FormTypePunto extends AbstractType{
                 'choice_label' => 'nombre',
                 'label'=>false,
             ))
-//            ->add('cuentaRel', EntityType::class, array(
-//                'class' => Sede::class,
-//                'query_builder' => function (EntityRepository $er)  {
-//                    return $er->createQueryBuilder('c')
-//                        ->orderBy('c.nombre', 'ASC');},
-//                'choice_label' => 'nombre',
-//                'required' => true))
-
             //Botón Guardar
             ->add ('btnGuardar', SubmitType::class, array(
                 'attr' => array(
