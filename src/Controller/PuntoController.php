@@ -12,13 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\Form\FormView;
 
 class PuntoController extends Controller
 
 {
     /**
-     * @Route("//punto_lista", name="lista_punto")
+     * @Route("/punto_lista", name="lista_punto")
      */
     public function listaAction(Request $request) {
         $sesion = new Session();

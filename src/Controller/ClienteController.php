@@ -75,7 +75,7 @@ class ClienteController extends Controller
                     }
                 }
             }
-        return $this->render('puntos/listaPunto.html.twig', array(
+        return $this->render('cliente/crearCliente.html.twig', array(
             'arCliente' => $arCliente,
             'form' => $form->createView()));
     }
