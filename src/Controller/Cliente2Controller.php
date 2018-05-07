@@ -2,18 +2,22 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use App\Controller\TextType;
+
 
 class Cliente2Controller extends Controller
 {
     var $strDqlLista = "";
-    var $strCodigo = "";
     var $strNombre = "";
     var $strNit = "";
 
     /**
-     * @Route("/cliente2/", name="cliente2")
+     * @Route("lista/cliente2", name="cliente2")
      */
     public function listaAction(Request $request)
     {
@@ -27,17 +31,44 @@ class Cliente2Controller extends Controller
             if ($form->get('BtnEliminar')->isClicked()) {
                 $arrSeleccionados = $request->request->get('ChkSeleccionar');
                 try {
-                    $em->getRepository('App:Cliente2')->eliminar($arrSeleccionados);
+                    $em->getRepository('App:Cliente')->eliminar($arrSeleccionados);
                 } catch (ForeignKeyConstraintViolationException $exception) {
                     if ($exception) {
                     }
                 }
-                return $this->redirect($this->generateUrl('brs_tur_base_cliente'));
+                return $this->redirect($this->generateUrl('cliente2'));
             }
         }
-        $arClientes = $paginator->paginate($em->createQuery($this->strDqlLista), $request->query->get('page', 1), 20);
-        return $this->render('BrasaTurnoBundle:Base/Cliente:lista.html.twig', array(
-            'arClientes' => $arClientes,
+
+        $test = $this->strDqlLista;
+        //$this->strDqlLista
+        $arCliente2 = $paginator->paginate($em->createQuery($test), $request->query->get('page', 1), 20);
+        return $this->render('cliente2/listaCliente2.html.twig', array(
+            'arCliente2' => $arCliente2,
             'form' => $form->createView()));
     }
+
+    private function lista() {
+        $em = $this->getDoctrine()->getManager();
+        $this->strDqlLista = $em->getRepository('App:Cliente')->listaDQL2($this->strNombre);
+        var_dump($this->strDqlLista);
+        die();
+    }
+
+    private function filtrar($form) {
+        $this->strNombre = $form->get('TxtNombre')->getData();
+        $this->strNit = $form->get('TxtNit')->getData();
+        $this->lista();
+    }
+
+    private function formularioFiltro() {
+        $form = $this->createFormBuilder()
+            ->add('TxtNombre', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array('label' => 'Nombre', 'data' => $this->strNombre))
+            ->add('TxtNit', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array('label' => 'Nit', 'data' => $this->strNit))
+            ->add('BtnEliminar', SubmitType::class, array('label' => 'Eliminar',))
+            ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
+            ->getForm();
+        return $form;
+    }
+
 }
