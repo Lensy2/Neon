@@ -7,8 +7,7 @@ use Symfony\Component\Security\Core\Role\Role;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="usuario")
+ * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  */
 class Usuario implements UserInterface, \Serializable
 {
@@ -346,6 +345,7 @@ class Usuario implements UserInterface, \Serializable
         $this->empresaRel = $empresaRel;
         return $this;
     }
+
 
 
 }

@@ -25,8 +25,8 @@ class UsuarioRepository extends EntityRepository
         $arUsuario= $em->createQueryBuilder()
             ->from("App:Usuario", "us")
             ->select("us");
-        if(!empty($sedes)) {
-            $arUsuario->where("se.nombre LIKE '%{$usuario}%'");
+        if(!empty($usuario)) {
+            $arUsuario->where("us.nombre LIKE '%{$usuario}%'");
         }
         return $arUsuario->getQuery();
 

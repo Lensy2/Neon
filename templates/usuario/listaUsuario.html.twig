@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="page-title-box">
-                                    <a href="{{ path('registrarUsuario') }}">
+                                    <a href="{{ path('crear_usuario') }}">
                                         <button class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</button>
                                     </a>
                                     <div class="clearfix"></div>
@@ -32,16 +32,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for usuario in usuarios %}
+                                            {% for usuario in pager.currentPageResults %}
                                                 <tr>
                                                     <td>
                                                         {{ usuario.codigoUsuarioPk }}
                                                     </td>
                                                     <td>
-                                                        {{ usuario.nombres }}
+                                                        {{ usuario.nombre }}
                                                     </td>
                                                     <td>{{ usuario.apellidos }}</td>
-                                                    <td>{{ usuario.correo }}</td>
+                                                    <td>{{ usuario.email }}</td>
                                                     <td>
                                                 </tr>
                                             {% endfor %}
