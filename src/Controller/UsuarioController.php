@@ -6,6 +6,8 @@ use App\Forms\Type\FormTypeUsuario;
 use App\Forms\Type\FormTypeCliente;
 use App\Forms\Type\FormTypeCategoria;
 use App\Forms\Type\FormTypeModulo;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use App\Entity\Usuario;
@@ -14,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use App\Repository;
+use Symfony\Component\Form\FormTypeInterface;
 
 
 class UsuarioController extends Controller
@@ -51,7 +55,7 @@ class UsuarioController extends Controller
     public function lista() {
         $sesion = new Session();
         $em = $this->getDoctrine()->getManager();
-        return $em->getRepository('Usuario')->listaDQL(
+        return $em->getRepository('App:Usuario')->listaDQL(
             $sesion->get("filtroNombreUsuario")
         );
     }
@@ -72,7 +76,7 @@ class UsuarioController extends Controller
             $arUsuario = $em->getRepository('Usuario')->find($codigoUsuario);
 
         }
-        $form = $this->createForm(\App\Forms\Type\FormTypeUsuario::class, $arUsuario);
+        $form = $this->createForm(FormTypeUsuario::class, $arUsuario);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             if ($form->isValid()) {

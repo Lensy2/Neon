@@ -24,16 +24,16 @@ class FormTypeUsuario extends AbstractType{
     public function buildForm (FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add ('codigoUsuarioPk', TextType::class,array(
+            ->add('username', TextType::class,array(
                 'attr' => array(
-                    'id' => '_codigoUsuarioPk',
-                    'name' => '_codigoUsuarioPk'
+                    'id' => '_username',
+                    'name' => '_username'
                 )
             ))
-            ->add ('nombres', TextType::class,array(
+            ->add ('nombre', TextType::class,array(
                 'attr' => array(
-                    'id' => '_nombres',
-                    'name' => '_nombres'
+                    'id' => '_nombre',
+                    'name' => '_nombre'
                 )
             ))
             ->add ('apellidos', TextType::class,array(
@@ -42,10 +42,10 @@ class FormTypeUsuario extends AbstractType{
                     'name' => '_apellidos'
                 )
             ))
-            ->add ('correo', TextType::class,array(
+            ->add ('email', TextType::class,array(
                 'attr' => array(
-                    'id' => '_correo',
-                    'name' => '_correo'
+                    'id' => '_email',
+                    'name' => '_email'
                 )
             ))
             ->add('clave', RepeatedType::class, array(
