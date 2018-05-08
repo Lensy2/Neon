@@ -5,23 +5,23 @@
        {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
                     {% block content %}
                         <div class="count">
-                            {{ pagination.getTotalItemCount }}
+                            {{ arCliente2.Count }}
                         </div>
                         <table>
                             <tr>
-                                <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.id') }}</th>
-                                <th{% if pagination.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'a.title') }}</th>
-                                <th>{{ knp_pagination_sortable(pagination, 'Release', ['a.date', 'a.time']) }}</th>
+                                <th>{{ knp_pagination_sortable(arCliente2, 'Id', 'a.id') }}</th>
+                                <th{% if arCliente2.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(arCliente2, 'Title', 'a.title') }}</th>
+                                <th>{{ knp_pagination_sortable(arCliente2, 'Release', ['a.date', 'a.time']) }}</th>
                             </tr>
-                            {% for cliente in pagination %}
+                            {% for cliente in arCliente2 %}
                                 <tr {% if loop.index is odd %}class="color"{% endif %}>
-                                    <td>{{ article.id }}</td>
-                                    <td>{{ article.nombre}}</td>
+                                    <td>{{ cliente.codigoClientePk }}</td>
+                                    <td>{{ cliente.nombre}}</td>
                                 </tr>
                             {% endfor %}
                         </table>
                         <div class="navigation">
-                            {{ knp_pagination_render(pagination) }}
+                            {{ knp_pagination_render(arCliente2) }}
                         </div>
         {% endblock content %}
         {{ include('bloquesGenerales/pie.html.twig') }}

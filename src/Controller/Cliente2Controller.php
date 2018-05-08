@@ -40,8 +40,7 @@ class Cliente2Controller extends Controller
             }
         }
 
-        $test = $this->strDqlLista;
-        //$this->strDqlLista
+        $test = $this->strDqlLista->getDql();
         $arCliente2 = $paginator->paginate($em->createQuery($test), $request->query->get('page', 1), 20);
         return $this->render('cliente2/listaCliente2.html.twig', array(
             'arCliente2' => $arCliente2,
@@ -51,8 +50,6 @@ class Cliente2Controller extends Controller
     private function lista() {
         $em = $this->getDoctrine()->getManager();
         $this->strDqlLista = $em->getRepository('App:Cliente')->listaDQL2($this->strNombre);
-        var_dump($this->strDqlLista);
-        die();
     }
 
     private function filtrar($form) {
