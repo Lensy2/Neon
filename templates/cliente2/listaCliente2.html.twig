@@ -4,62 +4,25 @@
        {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
        {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
                     {% block content %}
-        <div class="content-page">
-            <div class="content">
-                <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="page-title-box">
-                                        <a href="{{ path("crear_cliente") }}" class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
+                        <div class="count">
+                            {{ arCliente2.Count }}
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card-box">
-                                    <h4 class="header-title m-t-0 m-b-30"> Listado de clientes</h4>
-                                    {{ form_start(form) }}
-                                    {{ form_widget(form.TxtNombre, { 'attr': {'class': 'form-control'} }) }}
-                                    {{ form_widget(form.BtnFiltrar) }}
-                                    {{ form_end(form) }}
-                                    <div class="table-responsive">
-                                        <table class="table table table-hover m-0">
-                                            <thead>
-                                            <tr>
-                                                <th>id</th>
-                                                <th>Nit</th>
-                                                <th>Razón social</th>
-                                                <th>Nombre comercial</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for clientes in pager.currentPageResults %}
-                                                <tr>
-                                                    <td>{{ clientes.codigoClientePk }}</td>
-                                                    <td>
-                                                        {{ clientes.nit }}
-                                                    </td>
-                                                    <td>
-                                                        {{ clientes.nombre }}
-                                                    </td>
-                                                    <td>{{ clientes.email}}</td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                        <table>
+                            <tr>
+                                <th>{{ knp_pagination_sortable(arCliente2, 'Id', 'a.id') }}</th>
+                                <th{% if arCliente2.isSorted('a.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(arCliente2, 'Title', 'a.title') }}</th>
+                                <th>{{ knp_pagination_sortable(arCliente2, 'Release', ['a.date', 'a.time']) }}</th>
+                            </tr>
+                            {% for cliente in arCliente2 %}
+                                <tr {% if loop.index is odd %}class="color"{% endif %}>
+                                    <td>{{ cliente.codigoClientePk }}</td>
+                                    <td>{{ cliente.nombre}}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <div class="navigation">
+                            {{ knp_pagination_render(arCliente2) }}
                         </div>
-                        {% if pager.haveToPaginate %}
-                            <div class="pagerfanta">
-                                {{ pagerfanta(pager) }}
-                            </div>
-                        {% endif %}
-                </div>
-            </div>
-        </div>
         {% endblock content %}
         {{ include('bloquesGenerales/pie.html.twig') }}
     </div>

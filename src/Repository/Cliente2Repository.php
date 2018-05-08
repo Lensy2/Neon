@@ -11,15 +11,16 @@ class Cliente2Repository extends EntityRepository
 {
     public function listaDQL($nombre){
         $em = $this->getEntityManager();
-        $arClientes2 = $em->createQueryBuilder()
-            ->from("App:Cliente", "cli")
+        $arCliente2 = $em->createQueryBuilder()
+            ->from("App:Cliente2", "cli")
             ->select("cli");
         if(!empty($nombre)) {
-            $arClientes2->where("cli.nombre LIKE '%{$nombre}%'");
+            $arCliente2->where("cli.nombre LIKE '%{$nombre}%'");
         }
-        return $arClientes2->getQuery();
+        return $arCliente2->getQuery();
 
-    }
+ }
+
 //    public function __construct(RegistryInterface $registry)
 //    {
 //        parent::__construct($registry, Cliente::class);
