@@ -1,37 +1,9 @@
 <div class="topbar">
     <div class="topbar-left">
         <div class="text-center">
-            <a href="#" class="logo">
+            <a>
                 <span><img src="{{ asset ('/neon/public/minton/images/LogoGrisClarox100.png') }}" height="65"></span>
             </a>
         </div>
     </div>
-    <nav class="navbar-custom">
-        <ul class="list-inline float-right mb-0">
-            <li class="list-inline-item notification-list hide-phone">
-                <a class="nav-link waves-light waves-effect">
-                    <i class=""></i>
-                </a>
-            </li>
-            <li class="list-inline-item notification-list">
-                <a class="nav-link right-bar-toggle waves-light waves-effect" href="#">
-                    <i class="mdi mdi-dots- noti-icon"></i>
-                </a>
-            </li>
-            <li class="list-inline-item dropdown notification-list">
-                {% if app.user %}
-                    <a href="{{ logout_path('main') }}"><i class="ti-power-off m-r-5"></i>Salir</a>
-                {% else %}
-                    <a href="{{ path('acceso') }}"><i class="ti-power-off m-r-5"></i>Ingresar</a>
-                {% endif %}
-            </li>
-        </ul>
-        <ul class="list-inline menu-left mb-0">
-            <li class="float-left">
-                <button class="button-menu-mobile open-left waves-light waves-effect">
-                    <i class="mdi mdi-menu"></i>
-                </button>
-            </li>
-        </ul>
-    </nav>
 </div>

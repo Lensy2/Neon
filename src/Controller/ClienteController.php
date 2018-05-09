@@ -25,7 +25,7 @@ class ClienteController extends Controller
     public function listaAction(Request $request) {
         $sesion = new Session();
         $page=$request->query->get('page', 1);
-        $maxPerPage = '50';
+        $maxPerPage = '20';
         $currentPage = $page;
         if (!$page){$currentPage = '1';}
 

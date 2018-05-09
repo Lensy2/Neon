@@ -2,17 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>
-        {% if app.user is defined or app.user is not null %}
-        {% else %}
-            {% block title %}Neón{% endblock %}
-        {% endif %}
-    </title>
-    <link rel="icon" href="/neon/public/minton/images/Logox100.png" type="image/x-icon" />
+    <title>Neòn</title>
+    <link rel="icon" href="/neon/public/minton/images/Logox100.png" type="image/x-icon"/>
     {% block stylesheets %}
-        <link href="{{ asset('/neon/public/minton/plugins/switchery.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/neon/public/css/general.css') }}" rel="stylesheet" />
-        <link href="{{ asset('/neon/public/bundles/whiteoctoberpagerfanta/css/pagerfantaDefault.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/neon/public/minton/plugins/switchery.min.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/neon/public/css/general.css') }}" rel="stylesheet"/>
+        <link href="{{ asset('/neon/public/bundles/whiteoctoberpagerfanta/css/pagerfantaDefault.css') }}" rel="stylesheet"/>
         <link href="{{ asset('/neon/public/minton/light/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('/neon/public/minton/light/assets/css/icons.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('/neon/public/minton/light/assets/css/style.css') }}" rel="stylesheet" type="text/css">
@@ -21,28 +16,16 @@
 </head>
 <body class="fixed-left">
 <div id="wrapper">
-    {{ include('bloquesGenerales/encabezado.html.twig') }}
+    {#{{ include('bloquesGenerales/encabezado.html.twig') }}#}
     {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title"> Bienvenido </h4>
-                            &nbsp;
-                            {% if app.user is defined or app.user is not null %}
-                            {% else %}
-                            {% endif %}
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
+
+                {% block content %}
+
+                {% endblock %}
+
             </div>
         </div>
     </div>
@@ -63,7 +46,6 @@
     <script src="{{ asset('/neon/public/minton/light/assets/js/wow.min.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.scrollTo.min.js') }}"></script>
-    <script src="{{ asset('/neon/public/minton/plugins/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.core.js') }}"></script>
     <script src="{{ asset('/neon/public/minton/light/assets/js/jquery.app.js') }}"></script>
 {% endblock %}

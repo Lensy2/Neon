@@ -1,8 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block bodyAtt %}class="fixed-left"{% endblock %}
 {% block body %}
-    {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
-    {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Puntos</h4>
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><a href="#">Minton</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
     {% block content %}
         <div class="content-page">
             <div class="content">

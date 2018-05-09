@@ -1,8 +1,4 @@
 {% extends 'base.html.twig' %}
-{% block bodyAtt %}class="fixed-left"{% endblock %}
-{% block body %}
-        {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
-        {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
         <div class="content-page">
             <div class="content">
                 <div class="container">
@@ -57,6 +53,5 @@
                 </div>
             </div>
         </div>
-        {{ include('bloquesGenerales/pie.html.twig') }}
     </div>
 {% endblock %}

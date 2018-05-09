@@ -1,66 +1,98 @@
 {% extends 'base.html.twig' %}
 {% block bodyAtt %}class="fixed-left"{% endblock %}
 {% block body %}
-       {{ include('bloquesGenerales/menuEncabezado.html.twig') }}
-       {{ include('bloquesGenerales/menuIzquierdo.html.twig') }}
-                    {% block content %}
-        <div class="content-page">
-            <div class="content">
-                <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="page-title-box">
-                                        <a href="{{ path("crear_cliente") }}" class="btn btn-success btn-bordered waves-effect waves-light" style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</a>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card-box">
-                                    <h4 class="header-title m-t-0 m-b-30"> Listado de clientes</h4>
-                                    {{ form_start(form) }}
-                                    {{ form_widget(form.TxtNombre, { 'attr': {'class': 'form-control'} }) }}
-                                    {{ form_widget(form.BtnFiltrar) }}
-                                    {{ form_end(form) }}
-                                    <div class="table-responsive">
-                                        <table class="table table table-hover m-0">
-                                            <thead>
-                                            <tr>
-                                                <th>id</th>
-                                                <th>Nit</th>
-                                                <th>Razón social</th>
-                                                <th>Nombre comercial</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for clientes in pager.currentPageResults %}
-                                                <tr>
-                                                    <td>{{ clientes.codigoClientePk }}</td>
-                                                    <td>
-                                                        {{ clientes.nit }}
-                                                    </td>
-                                                    <td>
-                                                        {{ clientes.nombre }}
-                                                    </td>
-                                                    <td>{{ clientes.email}}</td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% if pager.haveToPaginate %}
-                            <div class="pagerfanta">
-                                {{ pagerfanta(pager) }}
-                            </div>
-                        {% endif %}
+    {% block content %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Clientes</h4>
+                    <ol class="breadcrumb float-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                    <div class="clearfix"></div>
                 </div>
             </div>
         </div>
-        {% endblock content %}
-        {{ include('bloquesGenerales/pie.html.twig') }}
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Nuevo
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Exportar
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> Filtar
+            </label>
+        </div>
+        {#<div class="row">#}
+               {#<div class="col-md-12">#}
+                   {#<div class="page-title-box">#}
+                             {#<a href="{{ path("crear_cliente") }}"#}
+                             {#class="btn btn-success btn-bordered waves-effect waves-light"#}
+                             {#style="float: right;"><span class="mdi mdi-plus"></span> Nuevo</a>#}
+                        {#<div class="clearfix"></div>#}
+                   {#</div>#}
+                   {#<div class="page-title-box">#}
+                       {#<a href=""#}
+                          {#class="btn btn-success btn-bordered waves-effect waves-light"#}
+                          {#style="float: right;"><span class="mdi mdi-plus"></span> Exportar</a>#}
+                       {#<div class="clearfix"></div>#}
+                   {#</div>#}
+               {#</div>#}
+         {#</div>#}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0 m-b-30"> Listado de clientes</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="page-title-box">
+                                            {{ form_start(form) }}
+                                            {{ form_widget(form.TxtNombre, { 'attr': {'class': 'form-control'} }) }}
+                                            {#{{ form_widget(form.BtnFiltrar) }}#}
+                                            <a href=""
+                                               class="btn btn-success btn-bordered waves-effect waves-light"
+                                               style="float: right;"><span class="mdi mdi-plus"></span>Filtrar</a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-hover m-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Consecutivo</th>
+                                            <th>Nit</th>
+                                            <th>Nombre</th>
+                                            <th>Email</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for clientes in pager.currentPageResults %}
+                                            <tr>
+                                                <td>{{ clientes.codigoClientePk }}</td>
+                                                <td>
+                                                    {{ clientes.nit }}
+                                                </td>
+                                                <td>
+                                                    {{ clientes.nombre }}
+                                                </td>
+                                                <td>{{ clientes.email }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if pager.haveToPaginate %}
+                        <div class="pagerfanta">
+                            {{ pagerfanta(pager) }}
+                        </div>
+                    {% endif %}
+    {% endblock content %}
     </div>
 {% endblock %}
