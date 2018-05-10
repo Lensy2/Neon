@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block bodyAtt %}class="fixed-left"{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Puntos</h4>
+                    <ol class="breadcrumb float-right">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item active">Puntos</li>
+                    </ol>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <a href="{{ path("crear_punto") }}"
+           class="btn btn-primary"> Nuevo</a>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <div class="col-md-3" style="right: 2px; ">
+                        <div class="page-title-box">
+                            {{ form_start(form) }}
+                            {{ form_widget(form.TxtNombre, { 'attr': {'class': 'form-control'} }) }}
+                            {{ form_widget(form.BtnFiltrar) }}
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                    <div class="table-responsive">
+                  <table class="table table table-hover m-0">
+                    <thead>
+                      <tr>
+                       <th>id</th>
+                        <th>Nombre Punto</th>
+                        <th>Direcciòn</th>
+                        <th>Telefono</th>
+                       </tr>
+                    </thead>
+                      <tbody>
+                        {% for punto in pager.currentPageResults %}
+                       <tr>
+                     <td>{{ punto.codigoPuntoPk }}</td>
+                      <td>
+                        {{ punto.nombre}}
+                      </td>
+                       <td>
+                        {{ punto.direccion}}
+                       </td>
+                      <td>{{ punto.telefono}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                 </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if pager.haveToPaginate %}
+            <div class="pagerfanta">
+                {{ pagerfanta(pager) }}
+            </div>
+        {% endif %}
+    {% endblock content %}
+    </div>
+{% endblock %}

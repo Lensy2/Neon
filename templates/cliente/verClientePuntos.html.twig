@@ -14,26 +14,26 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card-box">
-                <div class="col-md-3 col-md-push-3">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{ path("crear_cliente") }}" class="btn btn-primary"><i class=" fa fa-file-text-o "></i> </a>
-                    </div>
-                    <div class="btn-group">
-                        <div class="dropdown show">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             <i class=" fa fa-file-pdf-o "></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">PDF</a>
-                                <a class="dropdown-item" href="#">Excel</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="col-md-12">
+         <div class="card-box">
+               <div class="col-md-3 col-md-push-3">
+                   <div class="btn-group" role="group" aria-label="Basic example">
+                       <a href="{{ path("crear_cliente") }}" class="btn btn-primary"> Nuevo </a>
+                   </div>
+                   <div class="btn-group">
+                       <div class="dropdown show">
+                           <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Exportar
+                           </a>
+                           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                               <a class="dropdown-item" href="#">PDF</a>
+                               <a class="dropdown-item" href="#">Excel</a>
+                           </div>
+                       </div>
+                   </div>
+              </div>
+          </div>
+      </div>
         {{ form_start(form) }}
         <div class="row">
             <div class="col-md-12">
@@ -74,14 +74,8 @@
                                         {{ clientes.nombre }}
                                     </td>
                                     <td>{{ clientes.email }}</td>
-                                    <td style="text-align: center">
-                                        {#<button type="button" class="btn btn-danger"><a href="{{ path('editar_cliente', { 'codigoCliente':  clientes.codigoClientePk}) }}">Editar</a> </button>#}
-                                        {#<button type="button" class="btn btn-success"><a href="{{ path('ver_puntos_clientes', { 'codigoCliente': clientes.codigoClientePk }) }}">Ver</a> </button></td>#}
-                                        <a href="{{ path('editar_cliente', { 'codigoCliente':  clientes.codigoClientePk}) }}"></a><button type="button" class="btn btn-primary"><i class=" fa fa-edit "></i></button>
-                                        <a href="{{ path('ver_puntos_clientes', { 'codigoCliente': clientes.codigoClientePk }) }}"></a><button type="button" class="btn btn-success"><i class=" fa fa-eye "></i></button>
-                                        <input type="checkbox" id="myCheck" onclick="myFunction()">
-                                        <p id="text" style="display:none"></p> <a href="{{ path('ver_puntos_clientes', { 'codigoCliente': clientes.codigoClientePk }) }}"></a>
-                                    </td>
+                                    <td style="text-align: center"><a href="{{ path('editar_cliente', { 'codigoCliente':  clientes.codigoClientePk}) }}" ><img src=" " title="Editar cliente" width=20 height=20 title="Editar cliente"></a></td>
+                                    <td style="text-align: center"><a href="{{ path('ver_cliente_puntos', { 'codigoCliente': Clientes.codigoClientePk }) }}"><img src=" " width=22 height=22 title="Ver Puntos"></a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -91,16 +85,11 @@
             </div>
         </div>
         {{ form_end(form) }}
-        <div class="row">
-            <div class="btn-toolbar col-12">
-                <div class="btn-group col-9">
-                    {% if pager.haveToPaginate %}
-                        <div class="pagerfanta" style="float: left">
-                            {{ pagerfanta(pager) }}
-                        </div>
-                    {% endif %}
-                </div>
+        {% if pager.haveToPaginate %}
+            <div class="pagerfanta">
+                {{ pagerfanta(pager) }}
             </div>
-        </div>
+        {% endif %}
     {% endblock content %}
+    </div>
 {% endblock %}

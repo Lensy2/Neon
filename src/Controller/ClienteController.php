@@ -159,6 +159,21 @@ class ClienteController extends Controller
         $objWriter->save('php://output');
         exit;
     }
+
+    /**
+     * @Route("/cliente/editar/{codigoCliente}", name="editar_cliente")
+     */
+    public function editarCliente($codigoCliente){
+        return $this->render('cliente/editarCliente.html.twig');
+    }
+
+    /**
+     * @Route("/cliente/ver/{codigoCliente}", name="ver_puntos_clientes")
+     */
+    public function verPuntosCliente($codigoCliente){
+        return $this->render('cliente/verClientePuntos.html.twig');
+    }
+
 }
 
 
