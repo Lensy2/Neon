@@ -3,9 +3,9 @@
 .pagerfanta a,
 .pagerfanta span {
     display: inline-block;
-    border: 1px solid #2145ff !important;
+    border: 1px solid #03a8ff !important;
     border-radius: 3px;
-    color: #382cf5 !important;
+    color: #00a3ff !important;
     margin-right: .2em;
     padding: .25em .35em;
 }
@@ -16,8 +16,8 @@
 }
 
 .pagerfanta a:hover {
-    background: rgba(119, 0, 255, 0.38) !important;
-    color: #382cf5 !important;
+    background: rgba(15, 141, 255, 0.38) !important;
+    color: #00a3ff !important;
 }
 
 .pagerfanta .dots {
