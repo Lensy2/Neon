@@ -25,13 +25,13 @@ class ClienteController extends Controller
     public function listaAction(Request $request) {
         $sesion = new Session();
         $page=$request->query->get('page', 1);
-        $maxPerPage = '20';
+        $maxPerPage = '10';
         $currentPage = $page;
         if (!$page){$currentPage = '1';}
 
         $form = $this->createFormBuilder()
             ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $sesion->get('filtroNombreCliente'), 'required'=>false))
-            ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
+            ->add('BtnFiltrar', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
@@ -159,6 +159,21 @@ class ClienteController extends Controller
         $objWriter->save('php://output');
         exit;
     }
+
+    /**
+     * @Route("/cliente/editar/{codigoCliente}", name="editar_cliente")
+     */
+    public function editarCliente($codigoCliente){
+        return $this->render('cliente/editarCliente.html.twig');
+    }
+
+    /**
+     * @Route("/cliente/ver/{codigoCliente}", name="ver_puntos_clientes")
+     */
+    public function verPuntosCliente($codigoCliente){
+        return $this->render('cliente/verClientePuntos.html.twig');
+    }
+
 }
 
 
