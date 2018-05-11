@@ -31,7 +31,7 @@ class ClienteController extends Controller
 
         $form = $this->createFormBuilder()
             ->add('TxtNombre', TextType::class, array('label' => 'Nombre', 'data' => $sesion->get('filtroNombreCliente'), 'required'=>false))
-            ->add('BtnFiltrar', SubmitType::class, array('label' => 'Filtrar'))
+            ->add('BtnFiltrar', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){

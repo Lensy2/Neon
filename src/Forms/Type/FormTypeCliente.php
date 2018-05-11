@@ -50,7 +50,7 @@ class FormTypeCliente extends AbstractType{
             ->add ('btnGuardar', SubmitType::class, array(
                 'attr' => array(
                     'id' => '_btnGuardar',
-                    'name' => '_btnGuardar'
+                    'name' => '_btnGuardar',
                 ), 'label' => 'GUARDAR'
             ))
         ;
